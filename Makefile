@@ -13,7 +13,7 @@ src = $(wildcard $(src_dir)/*.cpp)
 obj = $(patsubst $(src_dir)/%.cpp,$(obj_dir)/%.o,$(src))
 
 # Executable
-exe = Main
+exe = ./bin/Main
 
 # Libraries
 LIBS = -L$(lib_dir)
