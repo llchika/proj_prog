@@ -2,8 +2,7 @@
 
 #include <constantes.h>
 
-Map::Map(std::string filename)
-{
+Map::Map(std::string filename) {
 	loadMap(filename);
 
 	m_floor = TextureManager::loadTexture("ressources/tiles/grassCenter.png");
@@ -16,18 +15,15 @@ Map::Map(std::string filename)
 
 }
 
-Map::~Map()
-{
+Map::~Map() {
 	//Delete texture
 }
 
-int Map::type(int x, int y) const
-{
+int Map::type(int x, int y) const {
 	return m_map.at(x).at(y);
 }
 
-void Map::loadMap(std::string filename)
-{
+void Map::loadMap(std::string filename) {
 	m_map = (new CSVReader(filename))->getData();
 	m_sizeY = m_map.size();
 	m_sizeX = m_map.front().size();
@@ -38,8 +34,7 @@ void Map::loadMap(std::string filename)
 	}
 }
 
-void Map::drawMap()
-{
+void Map::drawMap() {
 	int type = -1;
 
 	for (unsigned int row = 0; row < m_sizeY; ++row) {
@@ -64,12 +59,10 @@ void Map::drawMap()
 	}
 }
 
-void Map::addGameObject(GameObject* obj)
-{
+void Map::addGameObject(GameObject* obj) {
 	m_data[obj->getPosition()[0]][obj->getPosition()[1]].insert(obj);
 }
 
-void Map::removeGameObject(GameObject* obj)
-{
+void Map::removeGameObject(GameObject* obj) {
 	//A compl�ter
 }

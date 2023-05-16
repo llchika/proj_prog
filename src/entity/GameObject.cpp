@@ -4,8 +4,7 @@
 #include <constantes.h>
 
 
-GameObject::GameObject(Map * map, const char* textureSheet, const Vector2<int>& position)
-{
+GameObject::GameObject(Map * map, const char* textureSheet, const Vector2<int>& position) {
 	m_map = map;
 
 	m_objTexture = TextureManager::loadTexture(textureSheet);
@@ -29,19 +28,16 @@ GameObject::GameObject(Map * map, const char* textureSheet, const Vector2<int>& 
 	m_map->addGameObject(this);
 }
 
-GameObject::~GameObject()
-{
+GameObject::~GameObject() {
 	//Suppression de l'objet dans la carte
 	m_map->removeGameObject(this);
 }
 
-const Vector2<int>& GameObject::getPosition()
-{
+const Vector2<int>& GameObject::getPosition() {
 	return m_position;
 }
 
-void GameObject::setPosition(const Vector2<int>& position)
-{
+void GameObject::setPosition(const Vector2<int>& position) {
 	m_map->removeGameObject(this);
 
 	if (isValidCell(position)) {
@@ -52,19 +48,16 @@ void GameObject::setPosition(const Vector2<int>& position)
 	m_map->addGameObject(this);
 }
 
-void GameObject::translate(Vector2<int> const& v)
-{
+void GameObject::translate(Vector2<int> const& v) {
 	setPosition(m_position + v);
 }
 
-bool GameObject::isValidCell(const Vector2<int>& newPosition)
-{
+bool GameObject::isValidCell(const Vector2<int>& newPosition) {
 	//A compl�ter.
 	return true;
 }
 
-void GameObject::update()
-{
+void GameObject::update() {
 	m_srcRect.h = JeuESIR::tileSize;
 	m_srcRect.w = JeuESIR::tileSize;
 	m_srcRect.x = 0;
@@ -76,7 +69,6 @@ void GameObject::update()
 	m_destRect.y = m_position[0] * JeuESIR::tileSize;
 }
 
-void GameObject::render()
-{
+void GameObject::render() {
 	SDL_RenderCopy(Renderer::getInstance()->getSdlRenderer(), m_objTexture, &m_srcRect, &m_destRect);
 }

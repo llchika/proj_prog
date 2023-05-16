@@ -1,7 +1,6 @@
 #include <Game.h>
 
-Game::Game(unsigned int width, unsigned int height): count(0)
-{
+Game::Game(unsigned int width, unsigned int height): count(0) {
 	// 1 - Initialization of SDL
 	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS) != 0) {
 		SDL_Log("Unable to initialize SDL: %s", SDL_GetError());
@@ -18,23 +17,19 @@ Game::Game(unsigned int width, unsigned int height): count(0)
 	move[1] = 0;
 }
 
-Game::~Game()
-{
+Game::~Game() {
 	delete m_map;
 	//delete m_hero;
 }
 
-void Game::run()
-{
+void Game::run() {
 	gameLoop();
 	endGame();
 }
 
-void Game::gameLoop()
-{
+void Game::gameLoop() {
 	//// The main event loop
-	while (m_gameState != GameState::EXIT)
-	{
+	while (m_gameState != GameState::EXIT) {
 		m_frameStart = SDL_GetTicks();
 
 		// 1 - We handle events 
@@ -54,20 +49,17 @@ void Game::gameLoop()
 	}
 }
 
-void Game::handleEvent()
-{
+void Game::handleEvent() {
 	SDL_Event event;
 	
 	while (SDL_PollEvent(&event)) {
-		switch (event.type)
-		{
+		switch (event.type) {
 		case SDL_QUIT:
 			std::cout << "Exit signal detected" << ::std::endl;
 			m_gameState = GameState::EXIT;
 			break;
 		case SDL_KEYDOWN:
-			switch (event.key.keysym.sym)
-			{
+			switch (event.key.keysym.sym) {
 			case 'q':
 				std::cout << "Exit signal detected" << ::std::endl;
 				m_gameState = GameState::EXIT;
@@ -122,31 +114,27 @@ void Game::handleEvent()
 
 }
 
-void Game::update()
-{
+void Game::update() {
 	++count;
 	std::cout << count << std::endl;
 
 	m_hero->update();
 }
 
-void Game::render()
-{
+void Game::render() {
 	m_map->drawMap();
 	m_hero->render();
 	Renderer::getInstance()->flush();
 }
 
-void Game::endGame()
-{
+void Game::endGame() {
 	std::cout << "Shutting down renderer..." << std::endl;
 	Renderer::finalize();
 	std::cout << "Shutting down SDL" << std::endl;
 	SDL_Quit();
 }
 
-void Game::loadMap(std::string filename)
-{
+void Game::loadMap(std::string filename) {
 	m_map = new Map(filename);
 
 	m_hero = new Hero(m_map, "ressources/player/p1_walk01.png", Vector2<int>(0, 0), "SuperHero");
