@@ -8,15 +8,14 @@ class Ennemy : public Entity {
 public:
 
 private:
-    Vector2<int> m_target;
     int m_speed;
 
 public:
 
-    Ennemy(Map* map, const char* textureSheet, const Vector2<int>& position, std::string name, Vector2 target);
+    Ennemy(Map* map, const char* textureSheet, const Vector2<int>& position, std::string name);
     virtual ~Ennemy();
 
-    void update();
+    void update(Vector2<int> const& target);
 
 };
 

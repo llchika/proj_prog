@@ -102,12 +102,22 @@ void Game::handleEvent() {
 void Game::update() {
 	++count;
 	m_hero->update();
+    for (unsigned int i=0;i<m_ennemies.size();i++){
+        m_ennemies[i]->update(Vector2<int>(m_hero->getPosition()));
+    }
 }
 
 void Game::render() {
 	m_map->drawMap();
 	m_hero->render();
     m_mouse->render();
+
+    for(unsigned int i=0;i<m_ennemies.size();i++){
+        m_ennemies[i]->render();
+    }
+
+
+
 	Renderer::getInstance()->flush();
 }
 
@@ -123,5 +133,9 @@ void Game::loadMap(std::string filename) {
 	m_map=new Map(filename);
 	m_hero=new Hero(m_map, "ressources/player/p1_walk01.png", Vector2<int>(0, 0), "SuperHero");
     m_mouse=new Mouse(m_map, "ressources/player/p1_walk01.png", Vector2<int>(10, 0), "SuperMouse");
+    //load ennemies
+    for(int i=0;i<10;i+=2){
+        m_ennemies.push_back(new Ennemy(m_map, "ressources/player/p1_walk01.png", Vector2<int>(i, 0), "SuperEnnemy"));
+    }
 }
 

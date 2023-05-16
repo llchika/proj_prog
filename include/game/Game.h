@@ -7,6 +7,7 @@
 #include <Renderer.h>
 #include <TextureManager.h>
 #include <Timer.h>
+#include <Ennemy.h>
 
 class Game {
 private :
@@ -32,6 +33,8 @@ private :
 	Vector2<int> move;
 
 	Mouse *m_mouse;
+
+	std::vector<Ennemy*> m_ennemies;
 
 public :
 	/**
@@ -85,6 +88,7 @@ private :
 	 * @param filename: Path de la map
 	*/
 	void loadMap(std::string filename = "ressources/maps/map_lvl1.csv");
+
 };
 
 #endif
