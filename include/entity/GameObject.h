@@ -8,7 +8,8 @@
 
 class Map;
 
-class GameObject {
+class GameObject
+{
 private : 
 	
 	Vector2<int> m_position;			//position des cases 
