@@ -58,15 +58,15 @@ bool GameObject::isValidCell(const Vector2<int>& newPosition) {
 }
 
 void GameObject::update() {
-	m_srcRect.h = JeuESIR::tileSize;
-	m_srcRect.w = JeuESIR::tileSize;
-	m_srcRect.x = 0;
-	m_srcRect.y = 0;
+	m_srcRect.h=JeuESIR::tileSize;
+	m_srcRect.w=JeuESIR::tileSize;
+	m_srcRect.x=0;
+	m_srcRect.y=0;
 
-	m_destRect.h = m_srcRect.h ;
-	m_destRect.w = m_srcRect.w ;
-	m_destRect.x = m_position[1] * JeuESIR::tileSize;
-	m_destRect.y = m_position[0] * JeuESIR::tileSize;
+	m_destRect.h=m_srcRect.h ;
+	m_destRect.w=m_srcRect.w ;
+	m_destRect.x=m_position[1]*JeuESIR::tileSize;
+	m_destRect.y=m_position[0]*JeuESIR::tileSize;
 }
 
 void GameObject::render() {
