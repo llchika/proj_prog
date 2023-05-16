@@ -38,7 +38,7 @@ void Game::gameLoop() {
 			m_frameStart=SDL_GetTicks();
 			
             
-	        std::cout << m_hero->getDirection()[0] << ", " << m_hero->getDirection()[1] << std::endl;
+	        //std::cout << m_hero->getDirection()[0] << ", " << m_hero->getDirection()[1] << std::endl;
 			handleEvent();
 			update();
 			render();
@@ -136,6 +136,19 @@ void Game::loadMap(std::string filename) {
     //load ennemies
     for(int i=0;i<10;i+=2){
         m_ennemies.push_back(new Ennemy(m_map, "ressources/player/p1_walk01.png", Vector2<int>(i, 0), "SuperEnnemy"));
+    }
+}
+
+//remove the ennemy from the vector
+void Game::removeEnnemy(Ennemy* ennemy){
+    std::cout << "remove ennemy" << std::endl;
+    Ennemy* tmp;
+    for(unsigned int i=0;i<m_ennemies.size();i++){
+        tmp=m_ennemies[i];
+        if(tmp==ennemy){
+            m_ennemies.erase(m_ennemies.begin()+i);
+            delete tmp;
+        }
     }
 }
 

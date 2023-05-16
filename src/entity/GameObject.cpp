@@ -12,7 +12,7 @@ GameObject::GameObject(Map * map, const char* textureSheet, const Vector2<int>& 
 	m_position[0] = position[0];
 	m_position[1] = position[1];
 
-	std::cout << "m_position " << m_position[0] << ";" << m_position[1] << std::endl;
+	//std::cout << "m_position " << m_position[0] << ";" << m_position[1] << std::endl;
 
 	m_srcRect.h = JeuESIR::tileSize;
 	m_srcRect.w = JeuESIR::tileSize;

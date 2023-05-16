@@ -84,6 +84,9 @@ private :
 	*/
 	void loadMap(std::string filename = "ressources/maps/map_lvl1.csv");
 
+	//remove ennemy from the vector
+	void removeEnnemy(Ennemy* ennemy);
+
 };
 
 #endif
