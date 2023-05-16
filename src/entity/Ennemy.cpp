@@ -2,7 +2,7 @@
 #include <iostream>
 
 Ennemy::Ennemy(Map* map, const char* textureSheet, const Vector2<int>& position, std::string name)
-: Entity(map, textureSheet, position, name, position), m_speed(1) {
+: Entity(map, textureSheet, position, name), m_speed(1) {
 	initPersonnge();
 }
 

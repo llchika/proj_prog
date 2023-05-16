@@ -5,8 +5,8 @@
 uint32_t Entity::Id::m_count; 
 std::set<Entity*> Entity::m_entity;
 
-Entity::Entity(Map* map, const char* textureSheet, const Vector2<int>& position, std::string name, Vector2<int> size) :
-	GameObject(map, textureSheet, position), m_status(Entity::Status::RUNNING), m_name(name), m_size(size)
+Entity::Entity(Map* map, const char* textureSheet, const Vector2<int>& position, std::string name) :
+	GameObject(map, textureSheet, position), m_status(Entity::Status::RUNNING), m_name(name)
 {
 	m_entity.insert(this);
 }
