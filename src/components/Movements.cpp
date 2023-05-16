@@ -1,4 +1,4 @@
-#include "../../include/components/Movements.h"
+#include <Movements.h>
 
 
 Movements::Movements(Vector2<int>& position, Collider& collider,float speed) : m_position(position), m_collider(collider), m_speed(speed), SCREEN_WIDTH(SCREEN_WIDTH), SCREEN_HEIGHT(SCREEN_HEIGHT)

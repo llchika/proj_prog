@@ -1,4 +1,4 @@
-#include "../../include/components/Living.h"
+#include <Living.h>
 
 Living::Living(int maxHealth) : MAXHEALTH(maxHealth), m_health(maxHealth)
 {

@@ -1,4 +1,4 @@
-#include "../../include/components/MovementHero.h"
+#include <MovementHero.h>
 
 MovementHero::MovementHero(Vector2<int>& position, Collider& collider, float speed) : Movements(position, collider, speed)
 {
