@@ -5,14 +5,13 @@
 Map::Map(std::string filename) {
 	loadMap(filename);
 
-	m_floor = TextureManager::loadTexture("ressources/tiles/grassCenter.png");
-	m_grass = TextureManager::loadTexture("ressources/tiles/grassGreenCenter.png");
+	m_floor=TextureManager::loadTexture("ressources/tiles/grassCenter.png");
+	m_grass=TextureManager::loadTexture("ressources/tiles/grassGreenCenter.png");
 
-	m_srcRect.x = m_srcRect.y = 0;
-	m_srcRect.w = m_destRect.w = JeuESIR::tileSize;
-	m_srcRect.h = m_destRect.h = JeuESIR::tileSize;
-	m_destRect.x = m_destRect.y = 0;
-
+	m_srcRect.x=m_srcRect.y=0;
+	m_srcRect.w=m_destRect.w=JeuESIR::tileSize;
+	m_srcRect.h=m_destRect.h=JeuESIR::tileSize;
+	m_destRect.x=m_destRect.y=0;
 }
 
 Map::~Map() {
@@ -24,12 +23,12 @@ int Map::type(int x, int y) const {
 }
 
 void Map::loadMap(std::string filename) {
-	m_map = (new CSVReader(filename))->getData();
-	m_sizeY = m_map.size();
-	m_sizeX = m_map.front().size();
+	m_map=(new CSVReader(filename))->getData();
+	m_sizeY=m_map.size();
+	m_sizeX=m_map.front().size();
 
 	m_data.resize(m_sizeY);
-	for (unsigned int row = 0; row < m_sizeY; ++row) {
+	for (unsigned int row=0; row<m_sizeY; ++row) {
 		m_data[row].resize(m_sizeX);
 	}
 }
@@ -37,13 +36,13 @@ void Map::loadMap(std::string filename) {
 void Map::drawMap() {
 	int type = -1;
 
-	for (unsigned int row = 0; row < m_sizeY; ++row) {
-		for (unsigned int column = 0; column < m_sizeX; ++column) {
+	for (unsigned int row=0; row<m_sizeY; ++row) {
+		for (unsigned int column=0; column<m_sizeX; ++column) {
 			
 			type = m_map.at(row).at(column);
 
-			m_destRect.x = column * JeuESIR::tileSize;
-			m_destRect.y = row * JeuESIR::tileSize;
+			m_destRect.x=column*JeuESIR::tileSize;
+			m_destRect.y=row*JeuESIR::tileSize;
 			
 			switch (type) {
 			case 0 :

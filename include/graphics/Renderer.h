@@ -47,7 +47,7 @@ public:
 		}
 		
 		bool operator==(const Color & color) const {
-			return m_colorValue == color.m_colorValue;
+			return m_colorValue==color.m_colorValue;
 		}
 	};
 
@@ -156,7 +156,6 @@ public:
     */
     unsigned int height() const {return m_height;}
 
-
     /**
      * Dessiner un pixel
      * @param coordinates: Coordonnées du pixel
@@ -178,7 +177,7 @@ public:
      * @param str: Contenu du string
      * @param color: Couleur du string
     */
-    void drawString(Vector2<float> const & position, const ::std::string & str, const Color & color = Color(255, 255, 255, 255));
+    void drawString(Vector2<float> const & position, const ::std::string & str, const Color & color=Color(255,255,255,255));
 
     /**
      * Dessiner une map
@@ -205,7 +204,7 @@ public:
 	/**
      * Récupère l'instance du renderer
     */
-	static Renderer * getInstance() { return m_singleton.get(); }
+	static Renderer * getInstance() {return m_singleton.get();}
 };
 
 #endif

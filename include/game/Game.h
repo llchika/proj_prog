@@ -6,7 +6,6 @@
 #include <Renderer.h>
 #include <TextureManager.h>
 #include <Timer.h>
-#include <constantes.h>
 
 class Game {
 private :
@@ -59,7 +58,7 @@ private :
 	void handleEvent();
 
 	/**
-	 * Gestion des événements sur l'écran titre
+	 * Gestion des événements sur l'écran
 	*/
 	void startScreen();
 

@@ -45,12 +45,12 @@ public :
 	/// Getter sur la taille de la carte.
 	/// </summary>
 	/// <returns>Taille</returns>
-	unsigned int getSizeX() { return m_sizeX; }
+	unsigned int getSizeX() {return m_sizeX;}
 	/// <summary>
 	/// Getter sur la taille de la carte.
 	/// </summary>
 	/// <returns>Taille</returns>
-	unsigned int getSizeY() { return m_sizeY; }
+	unsigned int getSizeY() {return m_sizeY;}
 	/// <summary>
 	/// Retroune le type de texture d'une case.
 	/// </summary>
@@ -63,7 +63,7 @@ public :
 	/// Chargement de la carte en fonction du fichier csv.
 	/// </summary>
 	/// <param name="filename">Nom du fichier csv contenant la carte du jeu.</param>
-	void loadMap(std::string filename = "ressources/maps/map_lvl1.csv");
+	void loadMap(std::string filename="ressources/maps/map_lvl1.csv");
 	/// <summary>
 	/// Utilisation des textures en fonction du num�ro de la case.
 	/// </summary>

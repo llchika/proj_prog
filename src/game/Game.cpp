@@ -7,7 +7,7 @@ Game::Game(unsigned int width, unsigned int height): count(0) {
 		exit(3);
 	}
 
-	m_gameState = GameState::INIT;
+	m_gameState=GameState::PLAY;
 
 	Renderer::initialize(width, height);
 
@@ -23,26 +23,6 @@ Game::~Game() {
 }
 
 void Game::run() {
-	SDL_Texture* ecran_titre=TextureManager::loadTexture("ressources/ecran_titre.png");
-	SDL_Rect m_srcRect, m_destRect;
-	
-	m_srcRect.x=m_srcRect.y=0;
-	m_srcRect.w=m_destRect.w=JeuESIR::screenWidth;
-	m_srcRect.h=m_destRect.h=JeuESIR::screenHeight;
-	m_destRect.x=JeuESIR::screenWidth;
-	m_destRect.y=JeuESIR::screenHeight;
-
-	TextureManager::draw(ecran_titre, m_srcRect, m_destRect);
-
-	Renderer::getInstance()->flush();
-	
-	while (m_gameState==GameState::INIT) {
-		startScreen();
-		m_frameTime = SDL_GetTicks() - m_frameStart;
-			if (_frameDelay > m_frameTime) {
-				SDL_Delay(_frameDelay - m_frameTime);
-		}
-	}
 	gameLoop();
 	endGame();
 }
@@ -61,33 +41,6 @@ void Game::gameLoop() {
 			if (_frameDelay > m_frameTime) {
 				SDL_Delay(_frameDelay - m_frameTime);
 			}
-		}
-	}
-}
-
-void Game::startScreen() {
-	SDL_Event event;
-	while (SDL_PollEvent(&event)) {
-		switch (event.type) {
-			case SDL_QUIT:
-				std::cout << "Exit signal detected" << ::std::endl;
-				m_gameState=GameState::EXIT;
-				break;
-			case SDL_KEYDOWN:
-				switch (event.key.keysym.sym) {
-					case 'q':
-						std::cout << "Exit signal detected" << ::std::endl;
-						m_gameState = GameState::EXIT;
-						break;
-					case 'e':
-						std::cout << "Lancement du jeu" << ::std::endl;
-						m_gameState = GameState::PLAY;
-						break;
-					default:
-						break;
-					}
-			default:
-				break;
 		}
 	}
 }
