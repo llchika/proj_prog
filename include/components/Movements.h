@@ -1,11 +1,11 @@
 #ifndef _Movements_H
 #define _Movements_H
 
-#include "../utils/Vector2.h"
-#include "./Collider.h"
+#include <Vector2.h>
+#include <Collider.h>
 #include <vector>
 #include <constantes.h>
-#include "../entity/Entity.h"
+#include <Entity.h>
 
 class Movements {
 private:

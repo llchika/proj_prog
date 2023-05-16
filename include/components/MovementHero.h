@@ -1,7 +1,7 @@
 #ifndef _MovementHero_H
 #define _MovementHero_H
 
-#include "./Movements.h"
+#include <Movements.h>
 
 class MovementHero : public Movements{
 private:
