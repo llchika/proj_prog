@@ -32,4 +32,5 @@ $(obj_dir):
 	mkdir -p $(obj_dir)
 
 clean:
-	rm -rf obj
+	-rm -f obj/*.o
+	-rm -f obj/*/*.o
