@@ -16,8 +16,7 @@ public:
 	/// Returns the absolute time since the beginning of the simulation.
 	/// </summary>
 	/// <returns></returns>
-	static float time()
-	{
+	static float time() {
 		return m_currentTime;
 	}
 	
@@ -25,8 +24,7 @@ public:
 	/// Returns the time elapsed since the last time step.
 	/// </summary>
 	/// <returns></returns>
-	static float dt()
-	{
+	static float dt() {
 		return m_deltaTime;
 	}
 	
@@ -34,8 +32,7 @@ public:
 	/// Updates the time with specified time step duration.
 	/// </summary>
 	/// <param name="dt">The time step duration.</param>
-	static void update(float dt)
-	{
+	static void update(float dt) {
 		m_currentTime += dt;
 		m_deltaTime = dt;
 	}

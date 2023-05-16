@@ -7,8 +7,7 @@
 #include <string>
 #include <vector>
 
-class CSVReader
-{
+class CSVReader {
 private :
 	std::string m_filename;
 	char m_delimiter;

@@ -5,8 +5,7 @@
 #include <string>
 #include <GameObject.h>
 
-class Entity : public GameObject
-{
+class Entity : public GameObject {
 public:
 
 	/// <summary>

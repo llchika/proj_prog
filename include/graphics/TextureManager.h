@@ -6,8 +6,7 @@
 
 #include <Renderer.h>
 
-class TextureManager
-{
+class TextureManager {
 
 public :
 	/// <summary>

@@ -13,9 +13,7 @@
 #include <TextureManager.h>
 #include <Entity.h>
 
-class Map
-{
-
+class Map {
 private :
 
 	//Repr�sentation de la carte sous forme de case.

@@ -12,8 +12,7 @@
 /// <summary>
 /// Namespace containing useful mathematical functions and constants
 /// </summary>
-namespace MathUtils
-{	
+namespace MathUtils {	
 	/// <summary>
 	/// pi value
 	/// </summary>
@@ -29,8 +28,7 @@ namespace MathUtils
 	/// </summary>
 	/// <param name="surface">The surface of the circle.</param>
 	/// <returns> The radius of the circle. </returns>
-	inline float circleRadius(float surface)
-	{
+	inline float circleRadius(float surface) {
 		return sqrt(surface / MathUtils::pi);
 	}
 
@@ -38,8 +36,7 @@ namespace MathUtils
 	/// Computes a random number in the interval [0;1].
 	/// </summary>
 	/// <returns></returns>
-	inline float random()
-	{
+	inline float random() {
 		return (float)rand() / (float)RAND_MAX;
 	}
 	
@@ -49,8 +46,7 @@ namespace MathUtils
 	/// <param name="min">The minimum.</param>
 	/// <param name="max">The maximum.</param>
 	/// <returns></returns>
-	inline float random(float min, float max)
-	{
+	inline float random(float min, float max) {
 		assert((max >= min) && "Invalid interval in MathUtils::random(float, float)");
 		return min + random()*(max - min);
 	}
@@ -62,8 +58,7 @@ namespace MathUtils
 	/// <param name="max">The maximum value.</param>
 	/// <param name="value">The value.</param>
 	/// <returns></returns>
-	inline float clamp(float min, float max, float value)
-	{
+	inline float clamp(float min, float max, float value) {
 		assert(max >= min && "MathUtils::clamp: Invalid interval");
 		return ::std::max(::std::min(value, max), min);
 	}
@@ -73,8 +68,7 @@ namespace MathUtils
 	/// </summary>
 	/// <param name="weights">The table of weights.</param>
 	/// <returns> The index of the chosen element. </returns>
-	inline unsigned int randomChoose(const std::vector<float> & weights)
-	{
+	inline unsigned int randomChoose(const std::vector<float> & weights) {
 		assert(weights.size() > 0 && "MathUtils::randomChoose: Invalid weight vector, size must be greater than one");
 		::std::vector<float> accumulation(weights.size());
 		::std::partial_sum(weights.begin(), weights.end(), accumulation.begin());

@@ -7,8 +7,7 @@
 #include <TextureManager.h>
 #include <Timer.h>
 
-class Game
-{
+class Game {
 private :
 
 	//State of the game

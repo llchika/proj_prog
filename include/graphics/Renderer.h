@@ -14,17 +14,14 @@
 /// <summary>
 /// Class used to render 2D graphics.
 /// </summary>
-class Renderer
-{
+class Renderer {
 public:	
 	/// <summary>
 	/// A RGBA (Red, Green, Blue, Alpha) color. Alpha is the transparency channel. Each value is in the interval [0;255]. 
 	/// For the alpha channel, 255 means opaque, 0 means transparent.
 	/// </summary>
-	class Color
-	{
-		union
-		{
+	class Color {
+		union {
 			Uint32 m_colorValue;
 			Uint8  m_color[4];
 		};
@@ -37,8 +34,7 @@ public:
 		/// <param name="green">The green value in interval [0;255].</param>
 		/// <param name="blue">The blue value in interval [0;255].</param>
 		/// <param name="alpha">The alpha value in interval [0;255].</param>
-		Color(Uint8 red, Uint8 green, Uint8 blue, Uint8 alpha = 255)
-		{
+		Color(Uint8 red, Uint8 green, Uint8 blue, Uint8 alpha = 255) {
 			m_color[0] = red;
 			m_color[1] = green;
 			m_color[2] = blue;
@@ -50,8 +46,7 @@ public:
 		/// </summary>
 		/// <param name="index">The index.</param>
 		/// <returns></returns>
-		Uint8 & operator[](unsigned int index)
-		{
+		Uint8 & operator[](unsigned int index) {
 			return m_color[index];
 		}
 
@@ -60,8 +55,7 @@ public:
 		/// </summary>
 		/// <param name="index">The index.</param>
 		/// <returns></returns>
-		Sint8 operator[](unsigned int index) const
-		{
+		Sint8 operator[](unsigned int index) const {
 			return m_color[index];
 		}
 		
@@ -70,8 +64,7 @@ public:
 		/// </summary>
 		/// <param name="color">The color.</param>
 		/// <returns></returns>
-		bool operator<(const Color & color) const
-		{
+		bool operator<(const Color & color) const {
 			return m_colorValue < color.m_colorValue;
 		}
 		
@@ -80,8 +73,7 @@ public:
 		/// </summary>
 		/// <param name="color">The color.</param>
 		/// <returns></returns>
-		bool operator==(const Color & color) const
-		{
+		bool operator==(const Color & color) const {
 			return m_colorValue == color.m_colorValue;
 		}
 	};
@@ -90,8 +82,7 @@ protected:
 	/// <summary>
 	/// Internal representation of a string displayed on the screen
 	/// </summary>
-	struct String
-	{
+	struct String {
 		Vector2<float> position;
 		Color color;
 		std::string string;
@@ -100,15 +91,13 @@ protected:
 	/// <summary>
 	/// Internal representation of a circle
 	/// </summary>
-	struct Circle
-	{
+	struct Circle {
 		Vector2<float> center;
 		float radius;
 		Color color;
 	};
 
-	struct Rect
-	{
+	struct Rect {
 		Vector2<float> upperLeftPosition;
 		Vector2<float> lowerRightPosition;
 		Color color;

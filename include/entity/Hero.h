@@ -4,10 +4,7 @@
 #include <string>
 #include <Entity.h>
 
-class Hero :
-    public Entity
-{
-
+class Hero : public Entity {
 public:
     /// <summary>
     /// Constructeur de Hero
