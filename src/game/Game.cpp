@@ -13,8 +13,8 @@ Game::Game(unsigned int width, unsigned int height): count(0) {
 
 	loadMap();
 
-	move[0] = 0;
-	move[1] = 0;
+	move[0]=0;
+	move[1]=0;
 }
 
 Game::~Game() {
@@ -28,23 +28,23 @@ void Game::run() {
 }
 
 void Game::gameLoop() {
-	//// The main event loop
-	while (m_gameState != GameState::EXIT) {
-		m_frameStart = SDL_GetTicks();
+	// Boucle principale
+	while (m_gameState!=GameState::EXIT) {
+		while (m_gameState==GameState::INIT) { // Écran d'acceuil
+			m_gameState=GameState::PLAY;
+		}
 
-		// 1 - We handle events 
-		handleEvent();
+		while (m_gameState==GameState::PLAY) {
+			m_frameStart=SDL_GetTicks();
+			
+			handleEvent();
+			update();
+			render();
 
-		// 2 - We update the simulation
-		update();
-		
-		// 3 - We render the scene
-		render();
-
-		//4 - We limit the frame rate
-		m_frameTime = SDL_GetTicks() - m_frameStart;
-		if (_frameDelay > m_frameTime) {
-			SDL_Delay(_frameDelay - m_frameTime);
+			m_frameTime = SDL_GetTicks() - m_frameStart;
+			if (_frameDelay > m_frameTime) {
+				SDL_Delay(_frameDelay - m_frameTime);
+			}
 		}
 	}
 }

@@ -10,7 +10,7 @@
 class Game {
 private :
 	// État du jeu
-	enum class GameState { PLAY, EXIT };
+	enum class GameState {INIT, PLAY, EXIT};
 
 	// Paramètres
 	GameState m_gameState;	// État du jeu
