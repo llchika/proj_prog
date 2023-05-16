@@ -18,7 +18,7 @@ public :
 	/// </summary>
 	/// <param name="filename">Filename to read</param>
 	/// <param name="delimiter">The delimiter of the csv file</param>
-	CSVReader(std::string filename, char delimiter = ' ');
+	CSVReader(std::string filename, char delimiter=' ');
 	/// <summary>
 	/// Function to fetch data from a CSV File
 	/// </summary>

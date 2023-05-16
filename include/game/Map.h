@@ -16,10 +16,10 @@
 class Map {
 private :
 
-	//Repr�sentation de la carte sous forme de case.
+	//Représentation de la carte sous forme de case.
 	std::vector< std::vector< int > > m_map;
 	
-	//Un exemple de possiblit� pour stocker dans la carte tous les objets cases par cases.
+	//Un exemple de possiblité pour stocker dans la carte tous les objets cases par cases.
 	std::vector< std::vector <std::set< GameObject* >>> m_data;
 
 	//Taille de la carte

@@ -9,6 +9,8 @@ namespace JeuESIR {
 	//! Constantes définissant la taille du screen en fonction des tiles.
 	static const int maxScreenCol=33;
 	static const int maxScreenRow=21;
+	static const int demiCol=16;
+	static const int demiRow=10;
 	static const int screenWidth=tileSize*maxScreenCol;	  //480
 	static const int screenHeight=tileSize*maxScreenRow;  //608
 }
