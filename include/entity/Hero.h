@@ -10,6 +10,7 @@ public:
 
 private:
     Vector2<int> m_direction;
+    int m_speed;
 
 public:
     /// <summary>
