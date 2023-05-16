@@ -5,8 +5,8 @@
 Map::Map(std::string filename) {
 	loadMap(filename);
 
-	m_floor=TextureManager::loadTexture("ressources/tiles/grassCenter.png");
-	m_grass=TextureManager::loadTexture("ressources/tiles/grassGreenCenter.png");
+	m_floor=TextureManager::loadTexture("ressources/tiles/terre.png");
+	m_grass=TextureManager::loadTexture("ressources/tiles/pave.png");
 
 	m_srcRect.x=m_srcRect.y=0;
 	m_srcRect.w=m_destRect.w=JeuESIR::tileSize;

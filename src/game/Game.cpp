@@ -108,6 +108,6 @@ void Game::endGame() {
 
 void Game::loadMap(std::string filename) {
 	m_map=new Map(filename);
-	m_hero=new Hero(m_map, "ressources/player/p1_walk01.png", Vector2<int>(10, 16), "Fromage");
+	m_hero=new Hero(m_map, "ressources/player/fromage.png", Vector2<int>(10, 16), "Fromage");
 }
 
