@@ -19,7 +19,6 @@ Renderer::~Renderer() {
 	SDL_DestroyWindow(window);
 }
 
-
 /**
  * Dessine un pixel
 */

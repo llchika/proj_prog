@@ -79,7 +79,6 @@ public :
 	/// </summary>
 	/// <param name="obj">Objet � supprimer</param>
 	void removeGameObject(GameObject* obj);
-
 };
 
 #endif

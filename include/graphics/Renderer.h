@@ -206,10 +206,6 @@ public:
      * Récupère l'instance du renderer
     */
 	static Renderer * getInstance() { return m_singleton.get(); }
-
-
-
-
 };
 
 #endif
