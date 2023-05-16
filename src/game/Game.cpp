@@ -46,45 +46,45 @@ void Game::gameLoop() {
 }
 
 void Game::handleEvent() {
-   SDL_Event event;
-   while (SDL_PollEvent(&event)) {
-       if (event.type == SDL_QUIT) {
-           std::cout << "Exit signal detected" << ::std::endl;
-           m_gameState = GameState::EXIT;
-       }
-       else if (event.type == SDL_KEYDOWN && event.key.repeat == 0) {
-               switch(event.key.keysym.sym) {
-               case 'q':
-                   std::cout << "Exit signal detected" << ::std::endl;
-                   m_gameState = GameState::EXIT;
-                   break;
-               case 'e':
-                   std::cout << "Lancement du jeu" << ::std::endl;
-                   m_gameState = GameState::PLAY;
-                   break;
-               case SDLK_UP:
-                   m_hero->setPosition(m_hero->getPosition()+(Vector2<int>(-1,0)));
-                   break;
-               case SDLK_DOWN:
-                   m_hero->setPosition(m_hero->getPosition()+(Vector2<int>(1,0)));
-                   break;
-               case SDLK_RIGHT:
-                   m_hero->setPosition(m_hero->getPosition()+(Vector2<int>(0,1)));
-                   break;
-               case SDLK_LEFT:
-                   m_hero->setPosition(m_hero->getPosition()+(Vector2<int>(0,-1)));
-                   break;
-               case SDLK_SPACE:
-                   std::cout << "space down" << ::std::endl;
-                   break;
-               default:
-                   break;
-               }
-       }
-       else {
-           m_hero->setPosition(m_hero->getPosition()+(Vector2<int>(0,0)));
-       }
-   }
+    SDL_Event event;
+    while (SDL_PollEvent(&event)) {
+        if (event.type == SDL_QUIT) {
+            std::cout << "Exit signal detected" << ::std::endl;
+            m_gameState = GameState::EXIT;
+        }
+        else if (event.type == SDL_KEYDOWN && event.key.repeat == 0) {
+                switch(event.key.keysym.sym) {
+                case 'q':
+                    std::cout << "Exit signal detected" << ::std::endl;
+                    m_gameState = GameState::EXIT;
+                    break;
+                case 'e':
+                    std::cout << "Lancement du jeu" << ::std::endl;
+                    m_gameState = GameState::PLAY;
+                    break;
+                case SDLK_UP:
+                    m_hero->modif_dir(Hero::sens::UP);
+                    break;
+                case SDLK_DOWN:
+                    m_hero->modif_dir(Hero::sens::DOWN);
+                    break;
+                case SDLK_RIGHT:
+                    m_hero->modif_dir(Hero::sens::RIGHT);
+                    break;
+                case SDLK_LEFT:
+                    m_hero->modif_dir(Hero::sens::LEFT);
+                    break;
+                case SDLK_SPACE:
+                    std::cout << "space down" << ::std::endl;
+                    break;
+                default:
+                    break;
+                }
+        }
+        else {
+            m_hero->setPosition(m_hero->getPosition()+(Vector2<int>(0,0)));
+        }
+    }
 }
 
 

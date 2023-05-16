@@ -6,6 +6,12 @@
 
 class Hero : public Entity {
 public:
+    enum class sens {UP, DOWN, RIGHT, LEFT};
+
+private:
+    Vector2<int> m_direction;
+
+public:
     /// <summary>
     /// Constructeur de Hero
     /// </summary>
@@ -20,6 +26,8 @@ public:
     /// Fonction permettant de mettre � jour les caract�ristiques du h�ro.
     /// </summary>
     void update();
+
+    void modif_dir(sens direction);
 };
 
 #endif
