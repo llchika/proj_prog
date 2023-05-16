@@ -4,6 +4,7 @@
 #include <Entity.h>
 #include <vector>
 
+
 Game::Game(unsigned int width, unsigned int height): count(0) {
 	// 1 - Initialization of SDL
 	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS) != 0) {
@@ -115,7 +116,6 @@ void Game::render() {
     for(unsigned int i=0;i<m_ennemies.size();i++){
         m_ennemies[i]->render();
     }
-
 
 
 	Renderer::getInstance()->flush();

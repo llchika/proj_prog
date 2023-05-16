@@ -14,6 +14,9 @@ private:
     int m_speed;
 	Vector2<int> m_pos_camera;
 
+    int const MAXHEALTH;
+    int m_health;
+
 public:
     /// <summary>
     /// Constructeur de Hero

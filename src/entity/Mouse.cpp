@@ -23,7 +23,7 @@ void Mouse::update(Vector2<int> mousePos){
         if(typeName == "Ennemy")
         {
             std::cout << "Ennemy" << std::endl;
-
+            //entity->setStatus(Status::DESTROY);
             //je vois pas comment le supprimer sans avoir une liste static dans game (sinon ca crash)
 
         }
