@@ -3,14 +3,16 @@
 
 #include <string>
 #include <Entity.h>
+#include <constantes.h>
 
 class Hero : public Entity {
 public:
-    enum class sens {UP, DOWN, RIGHT, LEFT};
+    enum class sens {UP, DOWN, RIGHT, LEFT, NONE};
 
 private:
     Vector2<int> m_direction;
     int m_speed;
+	Vector2<int> m_pos_camera;
 
 public:
     /// <summary>
@@ -26,9 +28,17 @@ public:
     /// <summary>
     /// Fonction permettant de mettre � jour les caract�ristiques du h�ro.
     /// </summary>
-    void update();
+    virtual void update();
 
     void modif_dir(sens direction);
+
+    const Vector2<int> & getCamera() const {
+        return m_pos_camera;
+    }
+
+    const Vector2<int> & getDirection() const {
+        return m_direction;
+    }
 };
 
 #endif

@@ -58,11 +58,6 @@ private :
 	void handleEvent();
 
 	/**
-	 * Gestion des événements sur l'écran
-	*/
-	void startScreen();
-
-	/**
 	 * Mettre à jour tout les éléments du jeu
 	*/
 	void update();
@@ -82,6 +77,10 @@ private :
 	 * @param filename: Path de la map
 	*/
 	void loadMap(std::string filename = "ressources/maps/map_lvl1.csv");
+
+	/**
+	 * Récupère les coordonnées de la caméra
+	*/
 };
 
 #endif

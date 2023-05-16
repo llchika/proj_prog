@@ -69,7 +69,7 @@ public :
 	/// <summary>
 	/// Utilisation des textures en fonction du num�ro de la case.
 	/// </summary>
-	void drawMap(Hero & hero);
+	void drawMap(Vector2<int> pos_camera);
 
 	/// <summary>
 	/// Ajout d'un game object dans la donn�e m_data
