@@ -2,6 +2,7 @@
 #define GAME_H
 
 #include <Hero.h>
+#include <Mouse.h>
 #include <Map.h>
 #include <Renderer.h>
 #include <TextureManager.h>
@@ -29,6 +30,8 @@ private :
 	// Joueur
 	Hero* m_hero;
 	Vector2<int> move;
+
+	Mouse *m_mouse;
 
 public :
 	/**
