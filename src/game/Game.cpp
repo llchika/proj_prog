@@ -59,6 +59,7 @@ void Game::handleEvent() {
         if (event.type == SDL_MOUSEMOTION)
         {
             //get mouse position to put the mouse on the map
+            m_mouse->update(Vector2<int>(event.motion.y/32,event.motion.x/32));
 
 
         }

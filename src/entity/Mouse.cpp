@@ -9,7 +9,7 @@ Mouse::Mouse(Map* map, const char* textureSheet, const Vector2<int>& position, s
 
 Mouse::~Mouse() {}
 
-void Mouse::update() {
-    setPosition(getPosition());
+void Mouse::update(Vector2<int> mousePos){
+    setPosition(mousePos);
     GameObject::update();
 }

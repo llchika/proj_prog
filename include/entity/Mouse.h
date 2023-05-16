@@ -21,7 +21,7 @@ public:
     /// <summary>
     /// Fonction permettant de mettre � jour les caract�ristiques du h�ro.
     /// </summary>
-    void update();
+    void update(Vector2<int> mousePose);
 };
 
 #endif
