@@ -1,5 +1,9 @@
 #include <Game.h>
 
+#include <Collision.h>
+#include <Entity.h>
+#include <vector>
+
 Game::Game(unsigned int width, unsigned int height): count(0) {
 	// 1 - Initialization of SDL
 	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS) != 0) {
@@ -55,6 +59,13 @@ void Game::handleEvent() {
             std::cout << "Exit signal detected" << ::std::endl;
             m_gameState = GameState::EXIT;
         }
+        if (event.type == SDL_MOUSEMOTION)
+        {
+            //get mouse position to put the mouse on the map
+            m_mouse->update(Vector2<int>(event.motion.y/32,event.motion.x/32));
+
+
+        }
         else if (event.type == SDL_KEYDOWN && event.key.repeat == 0) {
                 switch(event.key.keysym.sym) {
                 case 'q':
@@ -91,11 +102,22 @@ void Game::handleEvent() {
 void Game::update() {
 	++count;
 	m_hero->update();
+    for (unsigned int i=0;i<m_ennemies.size();i++){
+        m_ennemies[i]->update(Vector2<int>(m_hero->getPosition()));
+    }
 }
 
 void Game::render() {
 	m_map->drawMap(m_hero->getCamera());
 	m_hero->render();
+    m_mouse->render();
+
+    for(unsigned int i=0;i<m_ennemies.size();i++){
+        m_ennemies[i]->render();
+    }
+
+
+
 	Renderer::getInstance()->flush();
 }
 
@@ -106,8 +128,14 @@ void Game::endGame() {
 	SDL_Quit();
 }
 
+
 void Game::loadMap(std::string filename) {
 	m_map=new Map(filename);
 	m_hero=new Hero(m_map, "ressources/player/fromage.png", Vector2<int>(10, 16), "Fromage");
+    m_mouse=new Mouse(m_map, "ressources/player/p1_walk01.png", Vector2<int>(10, 0), "SuperMouse");
+    //load ennemies
+    for(int i=0;i<10;i+=2){
+        m_ennemies.push_back(new Ennemy(m_map, "ressources/player/p1_walk01.png", Vector2<int>(i, 0), "SuperEnnemy"));
+    }
 }
 

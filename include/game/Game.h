@@ -2,10 +2,12 @@
 #define GAME_H
 
 #include <Hero.h>
+#include <Mouse.h>
 #include <Map.h>
 #include <Renderer.h>
 #include <TextureManager.h>
 #include <Timer.h>
+#include <Ennemy.h>
 
 class Game {
 private :
@@ -29,6 +31,10 @@ private :
 	// Joueur
 	Hero* m_hero;
 	Vector2<int> move;
+
+	Mouse *m_mouse;
+
+	std::vector<Ennemy*> m_ennemies;
 
 public :
 	/**
@@ -78,9 +84,6 @@ private :
 	*/
 	void loadMap(std::string filename = "ressources/maps/map_lvl1.csv");
 
-	/**
-	 * Récupère les coordonnées de la caméra
-	*/
 };
 
 #endif
