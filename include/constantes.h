@@ -10,7 +10,8 @@ namespace JeuESIR {
 	static const int maxScreenCol = 16;
 	static const int maxScreenRow = 20;
 	static const int screenWidth = tileSize * maxScreenCol;	//480
-	static const int screenHeight = tileSize * maxScreenRow;//608		
+	static const int screenHeight = tileSize * maxScreenRow;//608
+	static const int heroSize = 16;	
 
 }
 #endif

@@ -2,7 +2,7 @@
 #include <constantes.h>
 
 Hero::Hero(Map* map, const char* textureSheet, const Vector2<int>& position, std::string name)
-: Entity(map, textureSheet, position, name), m_direction(Vector2<int>(0,0)) {
+: Entity(map, textureSheet, position, name, Vector2<int>(JeuESIR::heroSize, JeuESIR::heroSize)), m_direction(Vector2<int>(0,0)) {
 	initPersonnge();
 }
 

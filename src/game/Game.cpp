@@ -1,5 +1,9 @@
 #include <Game.h>
 
+#include <Collision.h>
+#include <Entity.h>
+#include <vector>
+
 Game::Game(unsigned int width, unsigned int height): count(0) {
 	// 1 - Initialization of SDL
 	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS) != 0) {
@@ -105,6 +109,7 @@ void Game::endGame() {
 	std::cout << "Shutting down SDL" << std::endl;
 	SDL_Quit();
 }
+
 
 void Game::loadMap(std::string filename) {
 	m_map=new Map(filename);
