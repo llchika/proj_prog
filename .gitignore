@@ -31,4 +31,8 @@
 *.out
 *.app
 
+.vscode
+
+bin
+
 Main
