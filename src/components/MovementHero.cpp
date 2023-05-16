@@ -1,12 +1,8 @@
 #include <MovementHero.h>
 
-MovementHero::MovementHero(Vector2<int>& position, Collider& collider, float speed) : Movements(position, collider, speed)
-{
-}
+MovementHero::MovementHero(Vector2<int>& position, Collider& collider, float speed) : Movements(position, collider, speed) {}
 
-MovementHero::~MovementHero()
-{
-}
+MovementHero::~MovementHero() {}
 
 void MovementHero::update(){
     if (m_event.type == SDL_KEYDOWN){

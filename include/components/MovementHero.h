@@ -13,7 +13,7 @@ public:
 
     virtual ~MovementHero();
 
-    void update() override;
+    virtual void update();
 
     
 };
