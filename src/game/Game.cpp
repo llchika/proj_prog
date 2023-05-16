@@ -56,6 +56,12 @@ void Game::handleEvent() {
             std::cout << "Exit signal detected" << ::std::endl;
             m_gameState = GameState::EXIT;
         }
+        if (event.type == SDL_MOUSEMOTION)
+        {
+            //get mouse position to put the mouse on the map
+
+
+        }
         else if (event.type == SDL_KEYDOWN && event.key.repeat == 0) {
                 switch(event.key.keysym.sym) {
                 case 'q':
@@ -100,6 +106,7 @@ void Game::update() {
 void Game::render() {
 	m_map->drawMap();
 	m_hero->render();
+    m_mouse->render();
 	Renderer::getInstance()->flush();
 }
 
@@ -114,5 +121,6 @@ void Game::endGame() {
 void Game::loadMap(std::string filename) {
 	m_map=new Map(filename);
 	m_hero=new Hero(m_map, "ressources/player/p1_walk01.png", Vector2<int>(0, 0), "SuperHero");
+    m_mouse=new Mouse(m_map, "ressources/player/p1_walk01.png", Vector2<int>(10, 0), "SuperMouse");
 }
 
