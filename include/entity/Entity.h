@@ -1,15 +1,11 @@
 #ifndef _Entity_H
 #define _Entity_H
 
-#include <Collider.h>
-#include <GameObject.h>
-
 #include <set>
 #include <string>
+#include <GameObject.h>
 
-
-class Entity : public GameObject
-{
+class Entity : public GameObject {
 public:
 
 	/// <summary>
@@ -24,20 +20,18 @@ public:
 		bool operator==(Id const& id) const;
 	};
 
-	static std::set<Entity*> m_entity;
-
 private :
 	//Status 
 	enum class Status { RUNNING, DESTROY };	
 	Status m_status;
 
 	//Liste de toutes les entit�s du jeu
+	static std::set<Entity*> m_entity;
 	Id m_id;
 
 	//Caract�ristiques du l'entit�.
 	std::string m_name;
 
-	Vector2<int> m_size;
 
 public :
 	/// <summary>
@@ -47,7 +41,7 @@ public :
 	/// <param name="textureSheet">Texture de l'entit�</param>
 	/// <param name="position">Position de l'entit�</param>
 	/// <param name="name">Nom de l'entit�</param>
-	Entity(Map* map, const char* textureSheet, const Vector2<int>& position, std::string name, Vector2<int> size);
+	Entity(Map* map, const char* textureSheet, const Vector2<int>& position, std::string name);
 	virtual ~Entity();
 
 	/// <summary>
@@ -66,10 +60,7 @@ public :
 	/// </summary>
 	void initPersonnge();
 
-	Vector2<int> getSize(); 
-
 };
-
 
 
 #endif
