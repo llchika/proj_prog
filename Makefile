@@ -4,7 +4,7 @@ CXXFLAGS=-Wall -Wextra -std=c++11
 
 # Directories
 src_dir=src
-inc_dir=-Iinclude -Iinclude/entity -Iinclude/game -Iinclude/graphics -Iinclude/utils
+inc_dir=-Iinclude -Iinclude/entity -Iinclude/game -Iinclude/graphics -Iinclude/utils -Iinclude/components
 obj_dir=obj
 lib_dir=lib
 bin_dir=bin

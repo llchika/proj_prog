@@ -57,8 +57,6 @@ void Game::gameLoop() {
 			update();
 			render();
 
-			std::cout << m_hero->getPosition()[0] << std::endl;
-
 			m_frameTime = SDL_GetTicks() - m_frameStart;
 			if (_frameDelay > m_frameTime) {
 				SDL_Delay(_frameDelay - m_frameTime);
@@ -107,10 +105,6 @@ void Game::handleEvent() {
 					case 'q':
 						std::cout << "Exit signal detected" << ::std::endl;
 						m_gameState = GameState::EXIT;
-						break;
-					case 'e':
-						std::cout << "Lancement du jeu" << ::std::endl;
-						m_gameState = GameState::PLAY;
 						break;
 					case SDLK_RETURN:
 						std::cout << "Enter" << ::std::endl;
