@@ -53,6 +53,7 @@ void Game::handleEvent() {
             m_gameState = GameState::EXIT;
         }
         else if (event.type == SDL_KEYDOWN && event.key.repeat == 0) {
+                std::cout << m_hero->getPosition()[0] << ", " << m_hero->getPosition()[1] << std::endl;
                 switch(event.key.keysym.sym) {
                 case 'q':
                     std::cout << "Exit signal detected" << ::std::endl;
@@ -94,7 +95,7 @@ void Game::update() {
 }
 
 void Game::render() {
-	m_map->drawMap();
+	m_map->drawMap(*m_hero);
 	m_hero->render();
 	Renderer::getInstance()->flush();
 }
@@ -108,6 +109,6 @@ void Game::endGame() {
 
 void Game::loadMap(std::string filename) {
 	m_map=new Map(filename);
-	m_hero=new Hero(m_map, "ressources/player/p1_walk01.png", Vector2<int>(0, 0), "SuperHero");
+	m_hero=new Hero(m_map, "ressources/player/p1_walk01.png", Vector2<int>(500, 500), "Fromage");
 }
 

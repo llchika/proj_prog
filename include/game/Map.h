@@ -13,6 +13,8 @@
 #include <TextureManager.h>
 #include <Entity.h>
 
+#include <Hero.h>
+
 class Map {
 private :
 
@@ -67,7 +69,7 @@ public :
 	/// <summary>
 	/// Utilisation des textures en fonction du num�ro de la case.
 	/// </summary>
-	void drawMap();
+	void drawMap(Hero & hero);
 
 	/// <summary>
 	/// Ajout d'un game object dans la donn�e m_data

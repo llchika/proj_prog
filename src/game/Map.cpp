@@ -33,13 +33,13 @@ void Map::loadMap(std::string filename) {
 	}
 }
 
-void Map::drawMap() {
+void Map::drawMap(Hero & hero) {
 	int type = -1;
 
-	for (unsigned int row=0; row<m_sizeY; ++row) {
-		for (unsigned int column=0; column<m_sizeX; ++column) {
+	for (unsigned int row=0; row<JeuESIR::maxScreenRow; ++row) {
+		for (unsigned int column=0; column<JeuESIR::maxScreenCol; ++column) {
 			
-			type = m_map.at(row).at(column);
+			type=m_map.at(hero.getPosition()[1]+row).at(hero.getPosition()[0]+column);
 
 			m_destRect.x=column*JeuESIR::tileSize;
 			m_destRect.y=row*JeuESIR::tileSize;

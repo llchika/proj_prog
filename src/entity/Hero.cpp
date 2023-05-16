@@ -16,22 +16,22 @@ void Hero::update() {
 void Hero::modif_dir(sens direction) {
 	switch (direction) {
 		case sens::UP:
-			if (Hero::GameObject::getPosition()[0]!=0) {
+			if (Hero::GameObject::getPosition()[0]>0) {
 				Hero::GameObject::setPosition(Hero::GameObject::getPosition()+(Vector2<int>(-1,0)));
 			}
 			break;
 		case sens::DOWN:
-			if (Hero::GameObject::getPosition()[0]!=JeuESIR::maxScreenRow-1) {
+			if (Hero::GameObject::getPosition()[0]<1000) {
 				Hero::GameObject::setPosition(Hero::GameObject::getPosition()+(Vector2<int>(1,0)));
 			}
 			break;
 		case sens::RIGHT:
-			if (Hero::GameObject::getPosition()[1]!=JeuESIR::maxScreenCol-1) {
+			if (Hero::GameObject::getPosition()[1]<1000) {
 				Hero::GameObject::setPosition(Hero::GameObject::getPosition()+(Vector2<int>(0,1)));
 			}
 			break;
 		case sens::LEFT:
-			if (Hero::GameObject::getPosition()[1]!=0) {
+			if (Hero::GameObject::getPosition()[1]>0) {
 				Hero::GameObject::setPosition(Hero::GameObject::getPosition()+(Vector2<int>(0,-1)));
 			}
 			break;
