@@ -16,8 +16,8 @@ private :
 	GameState m_gameState;	// État du jeu
 
 	// Frame Rate
-	const int _FPS = 60;
-	const int _frameDelay = 1000 / _FPS;
+	const int _FPS=60;
+	const int _frameDelay=1000/_FPS;
 	unsigned long m_frameStart;
 	int m_frameTime;
 

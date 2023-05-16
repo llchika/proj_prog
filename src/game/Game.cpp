@@ -30,16 +30,14 @@ void Game::run() {
 void Game::gameLoop() {
 	// Boucle principale
 	while (m_gameState!=GameState::EXIT) {
-		while (m_gameState==GameState::INIT) { // Écran d'acceuil
-			m_gameState=GameState::PLAY;
-		}
-
 		while (m_gameState==GameState::PLAY) {
 			m_frameStart=SDL_GetTicks();
 			
 			handleEvent();
 			update();
 			render();
+
+			std::cout << m_hero->getPosition()[0] << std::endl;
 
 			m_frameTime = SDL_GetTicks() - m_frameStart;
 			if (_frameDelay > m_frameTime) {
@@ -54,70 +52,45 @@ void Game::handleEvent() {
 	
 	while (SDL_PollEvent(&event)) {
 		switch (event.type) {
-		case SDL_QUIT:
-			std::cout << "Exit signal detected" << ::std::endl;
-			m_gameState = GameState::EXIT;
-			break;
-		case SDL_KEYDOWN:
-			switch (event.key.keysym.sym) {
-			case 'q':
+			case SDL_QUIT:
 				std::cout << "Exit signal detected" << ::std::endl;
-				m_gameState = GameState::EXIT;
+				m_gameState=GameState::EXIT;
 				break;
-			case SDLK_RETURN:
-				std::cout << "Enter" << ::std::endl;
-				break;
-			case SDLK_RIGHT:
-				std::cout << "Right down" << ::std::endl;
-				break;
-			case SDLK_LEFT:
-				std::cout << "Left down" << ::std::endl;
-				break;
-			case SDLK_UP:
-				std::cout << "Up down" << ::std::endl;
-				break;
-			case SDLK_DOWN:
-				std::cout << "Down down" << ::std::endl;
-				break;
-			case SDLK_SPACE:
-				std::cout << "space down" << ::std::endl;
-				break;
+			case SDL_KEYDOWN:
+				switch (event.key.keysym.sym) {
+					case 'q':
+						std::cout << "Exit signal detected" << ::std::endl;
+						m_gameState = GameState::EXIT;
+						break;
+					case SDLK_RETURN:
+						std::cout << "Enter" << ::std::endl;
+						break;
+					case SDLK_UP:
+						m_hero->setPosition(m_hero->getPosition()+(Vector2<int>(0,1)));
+						break;
+					case SDLK_DOWN:
+						m_hero->setPosition(m_hero->getPosition()+(Vector2<int>(0,-1)));
+						break;
+					case SDLK_RIGHT:
+						m_hero->setPosition(m_hero->getPosition()+(Vector2<int>(1,0)));
+						break;
+					case SDLK_LEFT:
+						m_hero->setPosition(m_hero->getPosition()+(Vector2<int>(-1,0)));
+						break;
+					case SDLK_SPACE:
+						std::cout << "space down" << ::std::endl;
+						break;
+					default:
+						break;
+					}
 			default:
 				break;
-			}
-			break;
-		case SDL_KEYUP:
-			switch (event.key.keysym.sym) {
-			case SDLK_LEFT:
-				std::cout << "Left up" << ::std::endl;
-				break;
-			case SDLK_RIGHT:
-				std::cout << "Right up" << ::std::endl;
-				break;
-			case SDLK_UP:
-				std::cout << "up up" << ::std::endl;
-				break;
-			case SDLK_DOWN:
-				std::cout << "down up" << ::std::endl;
-				break;
-			case SDLK_SPACE:
-				std::cout << "space up" << ::std::endl;
-				break;
-			default:
-				break;
-			}
-			break;
-		default:
-			break;
 		}
 	}
-
 }
 
 void Game::update() {
 	++count;
-	std::cout << count << std::endl;
-
 	m_hero->update();
 }
 
@@ -136,8 +109,6 @@ void Game::endGame() {
 
 void Game::loadMap(std::string filename) {
 	m_map = new Map(filename);
-
 	m_hero = new Hero(m_map, "ressources/player/p1_walk01.png", Vector2<int>(0, 0), "SuperHero");
-
 }
 
