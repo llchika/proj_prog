@@ -35,8 +35,10 @@ private :
 	Mouse *m_mouse;
 
 	std::vector<Ennemy*> m_ennemies;
+	bool isInvincible;
 
-public:
+public :
+
 	int count_kill;
 	/**
 	 * Constructeur de la fenêtre de jeu
