@@ -87,6 +87,8 @@ private :
 	void removeEnnemy(Ennemy* ennemy);
 
 	void loadGameOver();
+
+	void spawnEnnemy();
 };
 
 #endif
