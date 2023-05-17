@@ -9,6 +9,8 @@ public:
 
 private:
     int m_speed;
+    int const MAXHEALTH;
+    int m_health;
 
 public:
 
@@ -16,6 +18,15 @@ public:
     virtual ~Ennemy();
 
     void update(Vector2<int> const& target);
+    
+    void setHealth(int health) {
+        m_health = health;
+    }
+
+    int getHealth() const {
+        return m_health;
+    }
+    
 
 };
 

@@ -54,10 +54,7 @@ void Game::gameLoop() {
                 }
                 if(typeName == "Mouse")
                 {
-                    std::cout << "mouse" << std::endl;
-                    //pour tester 
-                    m_hero->setHealth(m_hero->getHealth()-1);
-                    
+                    std::cout << "mouse" << std::endl;                    
                 }
 
                 //game over
@@ -162,7 +159,7 @@ void Game::endGame() {
 void Game::loadMap(std::string filename) {
 	m_map=new Map(filename);
 	m_hero=new Hero(m_map, "ressources/player/fromage.png", Vector2<int>(10, 16), "Fromage");
-    m_mouse=new Mouse(m_map, "ressources/player/p1_walk01.png", Vector2<int>(10, 0), "SuperMouse");
+    m_mouse=new Mouse(m_map, "ressources/player/fireball.png", Vector2<int>(10, 0), "SuperMouse");
     //load ennemies
     for(int i=0;i<10;i+=2){
         m_ennemies.push_back(new Ennemy(m_map, "ressources/player/p1_walk01.png", Vector2<int>(i, 0), "SuperEnnemy"));
@@ -172,7 +169,7 @@ void Game::loadMap(std::string filename) {
 //remove the ennemy from the vector
 void Game::removeEnnemy(Ennemy* ennemy){
     std::cout << "remove ennemy" << std::endl;
-    Ennemy* tmp;
+    static Ennemy* tmp;
     for(unsigned int i=0;i<m_ennemies.size();i++){
         tmp=m_ennemies[i];
         if(tmp==ennemy){

@@ -3,6 +3,8 @@
 #include <Collision.h>
 #include <iostream>
 #include <string>
+#include <Ennemy.h>
+
 Mouse::Mouse(Map* map, const char* textureSheet, const Vector2<int>& position, std::string name)
 : Entity(map, textureSheet, position, name) {
     initPersonnge();
@@ -25,7 +27,14 @@ void Mouse::update(Vector2<int> mousePos){
             std::cout << "Ennemy" << std::endl;
             //entity->setStatus(Status::DESTROY);
             //je vois pas comment le supprimer sans avoir une liste static dans game (sinon ca crash)
+            // il faut le caster en ennemy pour pouvoir réduire sa vie
+            Ennemy* ennemy = dynamic_cast<Ennemy*>(entity);
+            ennemy->setHealth(ennemy->getHealth()-1);
 
+        }
+        if(typeName == "Mouse")
+        {
+            std::cout << "mouse" << std::endl;                    
         }
 
 

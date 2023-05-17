@@ -17,7 +17,6 @@ Map::Map(std::string filename) {
 	m_right_of_wall=TextureManager::loadTexture("ressources/tiles/donjon/tile_0015.png");
 	m_left_of_wall=TextureManager::loadTexture("ressources/tiles/donjon/tile_0013.png");
 	m_top_of_wall=TextureManager::loadTexture("ressources/tiles/donjon/tile_0002.png");
-	m_bottom_of_wall=TextureManager::loadTexture("ressources/tiles/donjon/tile_0050.png");
 
 
 	m_srcRect.x=m_srcRect.y=0;
@@ -94,9 +93,6 @@ void Map::drawMap(Vector2<int> pos_camera) {
 				break;
 			case 12 :
 				TextureManager::draw(m_top_of_wall, m_srcRect, m_destRect);
-				break;
-			case 13 :
-				TextureManager::draw(m_bottom_of_wall, m_srcRect, m_destRect);
 				break;
 			default:
 				break;

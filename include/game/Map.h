@@ -31,6 +31,7 @@ private :
 	//Texture des cases
 	SDL_Rect m_srcRect, m_destRect;
 
+
 	SDL_Texture* m_black;
 	SDL_Texture* m_floor;
 	SDL_Texture* m_dirt;
@@ -44,7 +45,7 @@ private :
 	SDL_Texture* m_right_of_wall;
 	SDL_Texture* m_left_of_wall;
 	SDL_Texture* m_top_of_wall;
-	SDL_Texture* m_bottom_of_wall;
+
 
 public :
 
