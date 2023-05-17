@@ -146,7 +146,7 @@ void Game::handleEvent() {
         }
         else if (event.type == SDL_KEYDOWN && event.key.repeat == 0) {
             switch(event.key.keysym.sym) {
-            case 'q':
+            case SDLK_ESCAPE:
                 std::cout << "Exit signal detected" << ::std::endl;
                 m_gameState = GameState::EXIT;
                 break;
@@ -157,19 +157,20 @@ void Game::handleEvent() {
                 }
                 break;
             case SDLK_UP:
+            case 'z':
                 m_hero->modif_dir(Hero::sens::UP);
                 break;
             case SDLK_DOWN:
+            case 's':
                 m_hero->modif_dir(Hero::sens::DOWN);
                 break;
             case SDLK_RIGHT:
+            case 'd':
                 m_hero->modif_dir(Hero::sens::RIGHT);
                 break;
             case SDLK_LEFT:
+            case 'q':
                 m_hero->modif_dir(Hero::sens::LEFT);
-                break;
-            case SDLK_SPACE:
-                std::cout << "space down" << ::std::endl;
                 break;
             default:
                 break;
