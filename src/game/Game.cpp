@@ -3,6 +3,7 @@
 #include <Collision.h>
 #include <Entity.h>
 #include <vector>
+#include <Hearth.h>
 
 
 Game::Game(unsigned int width, unsigned int height): count(0) {
@@ -80,6 +81,17 @@ void Game::gameLoop() {
                     if (it!= m_ennemies.end()) {
                         m_ennemies.erase(it);
                     }
+                }
+                //augment health
+                if(typeName == "Item" && m_hero->getHealth()<m_hero->getMaxHealth()) {
+                    Hearth * tmp=dynamic_cast<Hearth*>(e);
+                    auto it = std::find_if( m_items.begin(), m_items.end(),
+                        [&]( Hearth *f ) { return ( f==tmp ); } );
+
+                    if (it!= m_items.end()) {
+                        m_items.erase(it);
+                    }
+                    m_hero->setHealth(m_hero->getHealth()+1);      
                 }
             }
 
@@ -163,6 +175,9 @@ void Game::update() {
     for (unsigned int i=0;i<m_ennemies.size();i++){
         m_ennemies[i]->update(Vector2<int>(m_hero->getPosition()));
     }
+    for (unsigned int i=0;i<m_items.size();i++){
+        m_items[i]->update();
+    }
 }
 
 void Game::render() {
@@ -173,6 +188,9 @@ void Game::render() {
 
         for(unsigned int i=0;i<m_ennemies.size();i++){
             m_ennemies[i]->render();
+        }
+        for(unsigned int i=0;i<m_items.size();i++){
+            m_items[i]->render();
         }
         m_mouse->render();
 

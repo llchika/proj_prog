@@ -8,6 +8,7 @@
 #include <TextureManager.h>
 #include <Timer.h>
 #include <Ennemy.h>
+#include <Item.h>
 
 class Game {
 private :
@@ -35,6 +36,8 @@ private :
 	Mouse *m_mouse;
 
 	std::vector<Ennemy*> m_ennemies;
+
+	std::vector<Item*> m_items;
 
 public :
 	/**
@@ -87,6 +90,7 @@ private :
 	void removeEnnemy(Ennemy* ennemy);
 
 	void spawnEnnemy();
+
 
 
 };
