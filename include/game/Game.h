@@ -85,12 +85,6 @@ private :
 
 	//remove ennemy from the vector
 	void removeEnnemy(Ennemy* ennemy);
-
-	void loadGameOver();
-
-	std::vector<Ennemy*> & getEnnemies() {
-		return m_ennemies;
-	}
 };
 
 #endif

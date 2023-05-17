@@ -65,6 +65,7 @@ void Game::gameLoop() {
                 if(m_hero->getHealth()<=0) {
                     m_gameState=GameState::DEAD;
                 }
+
             }
 
             std::vector<Entity*> allCollide2 = Collision::allCollide(m_mouse, m_mouse->getPosition());
@@ -91,6 +92,14 @@ void Game::gameLoop() {
 			if (_frameDelay > m_frameTime) {
 				SDL_Delay(_frameDelay - m_frameTime);
 			}
+
+            //print count
+            std::cout << "count : " << count << std::endl;
+            if(count%30==0){
+                spawnEnnemy();
+            }
+
+
 		}
         while (m_gameState==GameState::DEAD) {
             m_frameStart=SDL_GetTicks();
@@ -243,4 +252,17 @@ void Game::removeEnnemy(Ennemy* ennemy){
         }
     }
 }
+
+
+
+void Game::spawnEnnemy() {
+	//get random position in the screen but at more than 5 tiles m_hero
+	int x = rand() % (JeuESIR::maxScreenCol-10) + 5;
+    int y = rand() % (JeuESIR::maxScreenRow-10) + 5;
+
+    m_ennemies.push_back(new Ennemy(m_map, "ressources/player/p1_walk01.png", Vector2<int>(x, y), "SuperEnnemy"));
+
+
+}
+
 

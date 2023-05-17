@@ -1,6 +1,7 @@
 #include <Map.h>
 
 #include <constantes.h>
+#include <Obstacle.h>
 
 Map::Map(std::string filename) : cave(false) {
 	loadMap(filename);
@@ -68,7 +69,10 @@ void Map::drawMap(Vector2<int> pos_camera) {
 				TextureManager::draw(m_dirt, m_srcRect, m_destRect);
 				break;
 			case 3 :
+			{
 				TextureManager::draw(m_rock, m_srcRect, m_destRect);
+				//Obstacle* obstacle = new Obstacle(this, "ressources/tiles/donjon/tile_0042.png", Vector2<int>(column*JeuESIR::tileSize, row*JeuESIR::tileSize), "Obstacle");
+			}
 				break;
 			case 4 :
 				TextureManager::draw(m_tainted_floor, m_srcRect, m_destRect);
