@@ -53,8 +53,8 @@ void GameObject::translate(Vector2<int> const& v) {
 }
 
 bool GameObject::isValidCell(const Vector2<int>& newPosition) {
-	//A compl�ter.
-	return true;
+	return (newPosition[0] < JeuESIR::maxScreenCol && newPosition[0] >= 0 && newPosition[1] < JeuESIR::maxScreenRow && newPosition[1] >= 0);
+
 }
 
 void GameObject::update() {

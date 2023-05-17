@@ -13,10 +13,10 @@ void Ennemy::update(Vector2<int> const& target) {
 
 
 	//prit m_timer
-	std::cout << m_timer << std::endl;
+	//std::cout << m_timer << std::endl;
 
 	//translate of on ex or y toward the target
-	if (m_timer > 50) {
+	if (m_timer > 30) {
 		if (getPosition()[0] < target[0]) {
 			setPosition(Vector2<int>(getPosition()[0] + m_speed, getPosition()[1]));
 		}
