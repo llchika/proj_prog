@@ -21,7 +21,7 @@ void Hero::update() {
 		if(i<m_health){
 			Renderer::getInstance()->drawCircle(Vector2<float>(15+i*34,15), 16, Renderer::Color(255,0,0));
 		} else {
-			Renderer::getInstance()->drawCircle(Vector2<float>(15+i*34,15), 16, Renderer::Color(0,0,0));
+			Renderer::getInstance()->drawCircle(Vector2<float>(15+i*34,15), 16, Renderer::Color(50,50,50));
 		}
     }
     //load full hearts

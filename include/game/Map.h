@@ -33,6 +33,7 @@ private :
 	//Texture des cases
 	SDL_Rect m_srcRect, m_destRect;
 
+	SDL_Texture* m_sombre;
 
 	SDL_Texture* m_black;
 	SDL_Texture* m_floor;
@@ -50,6 +51,10 @@ private :
 
 
 public :
+
+	SDL_Texture* getSombre() {
+		return m_sombre;
+	}
 
 	/// <summary>
 	/// Constructeur de la carte du jeu.
@@ -96,6 +101,8 @@ public :
 	/// </summary>
 	/// <param name="obj">Objet � supprimer</param>
 	void removeGameObject(GameObject* obj);
+
+	bool isCave() {return cave;}
 };
 
 #endif

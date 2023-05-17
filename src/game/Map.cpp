@@ -2,8 +2,10 @@
 
 #include <constantes.h>
 
-Map::Map(std::string filename) {
+Map::Map(std::string filename) : cave(true) {
 	loadMap(filename);
+
+	m_sombre=TextureManager::loadTexture("ressources/sombre.png");
 
 	m_floor=TextureManager::loadTexture("ressources/tiles/donjon/tile_0048.png");
 	m_dirt=TextureManager::loadTexture("ressources/tiles/donjon/tile_0049.png");
@@ -17,7 +19,6 @@ Map::Map(std::string filename) {
 	m_right_of_wall=TextureManager::loadTexture("ressources/tiles/donjon/tile_0015.png");
 	m_left_of_wall=TextureManager::loadTexture("ressources/tiles/donjon/tile_0013.png");
 	m_top_of_wall=TextureManager::loadTexture("ressources/tiles/donjon/tile_0002.png");
-
 
 	m_srcRect.x=m_srcRect.y=0;
 	m_srcRect.w=m_destRect.w=JeuESIR::tileSize;

@@ -95,37 +95,36 @@ void Game::handleEvent() {
 
         }
         else if (event.type == SDL_KEYDOWN && event.key.repeat == 0) {
-                switch(event.key.keysym.sym) {
-                case 'q':
-                    std::cout << "Exit signal detected" << ::std::endl;
-                    m_gameState = GameState::EXIT;
-                    break;
-                case 'e':
-                    std::cout << "Lancement du jeu" << ::std::endl;
-                    m_gameState = GameState::PLAY;
-                    break;
-                case SDLK_UP:
-                    m_hero->modif_dir(Hero::sens::UP);
-                    break;
-                case SDLK_DOWN:
-                    m_hero->modif_dir(Hero::sens::DOWN);
-                    break;
-                case SDLK_RIGHT:
-                    m_hero->modif_dir(Hero::sens::RIGHT);
-                    break;
-                case SDLK_LEFT:
-                    m_hero->modif_dir(Hero::sens::LEFT);
-                    break;
-                case SDLK_SPACE:
-                    std::cout << "space down" << ::std::endl;
-                    break;
-                default:
-                    break;
-                }
+            switch(event.key.keysym.sym) {
+            case 'q':
+                std::cout << "Exit signal detected" << ::std::endl;
+                m_gameState = GameState::EXIT;
+                break;
+            case 'e':
+                std::cout << "Lancement du jeu" << ::std::endl;
+                m_gameState = GameState::PLAY;
+                break;
+            case SDLK_UP:
+                m_hero->modif_dir(Hero::sens::UP);
+                break;
+            case SDLK_DOWN:
+                m_hero->modif_dir(Hero::sens::DOWN);
+                break;
+            case SDLK_RIGHT:
+                m_hero->modif_dir(Hero::sens::RIGHT);
+                break;
+            case SDLK_LEFT:
+                m_hero->modif_dir(Hero::sens::LEFT);
+                break;
+            case SDLK_SPACE:
+                std::cout << "space down" << ::std::endl;
+                break;
+            default:
+                break;
+            }
         }
     }
 }
-
 
 void Game::update() {
 	++count;
@@ -145,6 +144,17 @@ void Game::render() {
     }
     m_mouse->render();
 
+    if (m_map->isCave()) {
+        SDL_Rect Rect;
+
+        Rect.x=0;
+        Rect.y=0;
+        Rect.w=JeuESIR::screenWidth;
+        Rect.h=JeuESIR::screenHeight;
+
+        SDL_RenderCopy(static_cast<SDL_Renderer*>(Renderer::getInstance()->getSdlRenderer()), m_map->getSombre(), &Rect, &Rect);
+    }
+
 	Renderer::getInstance()->flush();
 }
 
@@ -158,7 +168,6 @@ void Game::endGame() {
 
 void Game::loadMap(std::string filename) {
 	m_map=new Map(filename);
-	
     //load ennemies
     for(int i=0;i<10;i+=2){
         m_ennemies.push_back(new Ennemy(m_map, "ressources/player/p1_walk01.png", Vector2<int>(i, 0), "SuperEnnemy"));
