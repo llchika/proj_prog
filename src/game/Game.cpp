@@ -54,7 +54,8 @@ void Game::gameLoop() {
                 }
                 if(typeName == "Mouse")
                 {
-                    std::cout << "mouse" << std::endl;                    
+                    std::cout << "mouse" << std::endl;
+                    //m_hero->setHealth(m_hero->getHealth()-1);                    
                 }
 
                 //game over
@@ -91,7 +92,6 @@ void Game::handleEvent() {
         {
             //get mouse position to put the mouse on the map
             m_mouse->update(Vector2<int>(event.motion.y/32,event.motion.x/32));
-
 
         }
         else if (event.type == SDL_KEYDOWN && event.key.repeat == 0) {

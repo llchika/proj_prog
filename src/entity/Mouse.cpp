@@ -30,16 +30,15 @@ void Mouse::update(Vector2<int> mousePos){
             // il faut le caster en ennemy pour pouvoir réduire sa vie
             Ennemy* ennemy = dynamic_cast<Ennemy*>(entity);
             ennemy->setHealth(ennemy->getHealth()-1);
-
+            if(ennemy->getHealth()<=0)
+            {
+                //game->removeEnnemy(ennemy);
+            }
         }
         if(typeName == "Mouse")
         {
             std::cout << "mouse" << std::endl;         
         }
-
-
-
     }
-
     GameObject::update();
 }

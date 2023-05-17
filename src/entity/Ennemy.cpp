@@ -2,13 +2,15 @@
 #include <iostream>
 
 Ennemy::Ennemy(Map* map, const char* textureSheet, const Vector2<int>& position, std::string name)
-: Entity(map, textureSheet, position, name), m_speed(1), MAXHEALTH(10), m_health(5){
+: Entity(map, textureSheet, position, name), m_speed(1), MAXHEALTH(10), m_health(5), m_timer(0) {
 	initPersonnge();
 }
 
 Ennemy::~Ennemy() {}
 
 void Ennemy::update(Vector2<int> const& target) {
+	//prit m_timer
+	std::cout << "Ennemy::update()" << std::endl;
 	//move the target in a random direction
 	//int x = rand() % 3 - 1;
 	//int y = rand() % 3 - 1;
