@@ -85,6 +85,10 @@ private :
 
 	//remove ennemy from the vector
 	void removeEnnemy(Ennemy* ennemy);
+
+	void spawnEnnemy();
+
+
 };
 
 #endif
