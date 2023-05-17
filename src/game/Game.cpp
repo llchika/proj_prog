@@ -79,12 +79,13 @@ void Game::gameLoop() {
                     Hearth * tmp=dynamic_cast<Hearth*>(e);
                     auto it = std::find_if( m_items.begin(), m_items.end(),
                         [&]( Item *f ) { return ( f==tmp ); } );
-
                     if (it!= m_items.end()) {
                         m_items.erase(it);
                     }
+                    isTouchHeart = true;
                     if (!isHeartInvincible) {
-                        m_hero->setHealth(m_hero->getHealth()+1);    
+                        std::cout << "ok" << std::endl;
+                        m_hero->setHealth(m_hero->getHealth()+2);    
                         isHeartInvincible = true;
                     }  
                 }
@@ -94,6 +95,8 @@ void Game::gameLoop() {
                 isInvincible = false;
             if(!isTouchHeart)
                 isHeartInvincible = false;
+            
+                
 
             std::vector<Entity*> allCollide2 = Collision::allCollide(m_mouse, m_mouse->getPosition());
             for (Entity* e : allCollide2) {
