@@ -67,7 +67,7 @@ void Game::gameLoop() {
                 //game over
                 if(m_hero->getHealth()<=0)
                 {
-                    //load game over screen
+                    m_gameState=GameState::DEAD;
                     std::cout << "game over" << std::endl;
                 }
             }
@@ -169,9 +169,17 @@ void Game::render() {
             Rect.h=JeuESIR::screenHeight;
 
             SDL_RenderCopy(static_cast<SDL_Renderer*>(Renderer::getInstance()->getSdlRenderer()), m_map->getTitle(), &Rect, &Rect);
+    } else if (m_gameState==GameState::DEAD) {
+        SDL_Rect Rect;
+
+        Rect.x=0;
+        Rect.y=0;
+        Rect.w=JeuESIR::screenWidth;
+        Rect.h=JeuESIR::screenHeight;
+
+        SDL_RenderCopy(static_cast<SDL_Renderer*>(Renderer::getInstance()->getSdlRenderer()), m_map->getEnd(), &Rect, &Rect);
     }
     
-
 	Renderer::getInstance()->flush();
 }
 

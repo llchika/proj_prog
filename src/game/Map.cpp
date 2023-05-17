@@ -2,7 +2,7 @@
 
 #include <constantes.h>
 
-Map::Map(std::string filename) : cave(true) {
+Map::Map(std::string filename) : cave(false) {
 	loadMap(filename);
 
 	m_sombre=TextureManager::loadTexture("ressources/sombre.png");
