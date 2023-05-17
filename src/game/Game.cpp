@@ -85,6 +85,14 @@ void Game::gameLoop() {
                     if (count_kill==50) {
                         (*m_map).cave=true;
                     }
+                    if (count_kill%50==0) {
+                        m_hero->MAXHEALTH+=1;
+                    }
+                    if (count_kill%50==0) {
+                        if (m_hero->getHealth()<m_hero->MAXHEALTH) {
+                            m_hero->setHealth(m_hero->getHealth());
+                        }
+                    }
                 }
             }
 

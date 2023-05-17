@@ -35,8 +35,6 @@ void Hero::update() {
 		
 	}
 
-	GameObject::update();
-
 	//load hearts
     for(int i=0;i<MAXHEALTH;i++){
 		if(i<m_health){
@@ -46,6 +44,9 @@ void Hero::update() {
 		}
     }
     //load full hearts
+
+	GameObject::update();
+
 }
 
 void Hero::modif_dir(sens direction) {
