@@ -39,7 +39,7 @@ void Game::gameLoop() {
 			m_frameStart=SDL_GetTicks();
 
 
-            //surement gourmdand, si c'est trop lent changer de place
+            //surement gourmand, si c'est trop lent changer de place
             std::vector<Entity*> allCollide = Collision::allCollide(m_hero, m_hero->getPosition());
             for (Entity* e : allCollide) {
                 //type id name without the fist char
@@ -47,6 +47,7 @@ void Game::gameLoop() {
                 typeName = typeName.substr(1, typeName.length() - 1);
                 if(typeName == "Ennemy")
                 {
+                    //manque invulnerabilite tempo
                     std::cout << "Ennemy" << std::endl;
                     m_hero->setHealth(m_hero->getHealth()-1);
                     
@@ -57,6 +58,12 @@ void Game::gameLoop() {
                     //pour tester 
                     m_hero->setHealth(m_hero->getHealth()-1);
                     
+                }
+
+                //game over
+                if(m_hero->getHealth()<=0)
+                {
+                    //load game over screen
                 }
             }
 			
