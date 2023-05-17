@@ -5,8 +5,20 @@
 Map::Map(std::string filename) {
 	loadMap(filename);
 
-	m_floor=TextureManager::loadTexture("ressources/tiles/terre.png");
-	m_grass=TextureManager::loadTexture("ressources/tiles/pave.png");
+	m_floor=TextureManager::loadTexture("ressources/tiles/donjon/tile_0048.png");
+	m_dirt=TextureManager::loadTexture("ressources/tiles/donjon/tile_0049.png");
+	m_rock=TextureManager::loadTexture("ressources/tiles/donjon/tile_0042.png");
+	m_tainted_floor=TextureManager::loadTexture("ressources/tiles/donjon/tile_0000.png");
+	m_tainted_dirt=TextureManager::loadTexture("ressources/tiles/donjon/tile_0012.png");
+	m_tainted_rock=TextureManager::loadTexture("ressources/tiles/donjon/tile_0024.png");
+	m_wall=TextureManager::loadTexture("ressources/tiles/donjon/tile_0040.png");
+	m_monster_wall=TextureManager::loadTexture("ressources/tiles/donjon/tile_0019.png");
+	m_hole_wall=TextureManager::loadTexture("ressources/tiles/donjon/tile_0007.png");
+	m_right_of_wall=TextureManager::loadTexture("ressources/tiles/donjon/tile_0015.png");
+	m_left_of_wall=TextureManager::loadTexture("ressources/tiles/donjon/tile_0013.png");
+	m_top_of_wall=TextureManager::loadTexture("ressources/tiles/donjon/tile_0002.png");
+	m_bottom_of_wall=TextureManager::loadTexture("ressources/tiles/donjon/tile_0050.png");
+
 
 	m_srcRect.x=m_srcRect.y=0;
 	m_srcRect.w=m_destRect.w=JeuESIR::tileSize;
@@ -45,10 +57,46 @@ void Map::drawMap(Vector2<int> pos_camera) {
 			
 			switch (type) {
 			case 0 :
-				TextureManager::draw(m_grass, m_srcRect, m_destRect);
+				TextureManager::draw(m_black, m_srcRect, m_destRect);
 				break;
 			case 1 :
 				TextureManager::draw(m_floor, m_srcRect, m_destRect);
+				break;
+			case 2 :
+				TextureManager::draw(m_dirt, m_srcRect, m_destRect);
+				break;
+			case 3 :
+				TextureManager::draw(m_rock, m_srcRect, m_destRect);
+				break;
+			case 4 :
+				TextureManager::draw(m_tainted_floor, m_srcRect, m_destRect);
+				break;
+			case 5 :
+				TextureManager::draw(m_tainted_dirt, m_srcRect, m_destRect);
+				break;
+			case 6 :
+				TextureManager::draw(m_tainted_rock, m_srcRect, m_destRect);
+				break;
+			case 7 :	
+				TextureManager::draw(m_wall, m_srcRect, m_destRect);
+				break;
+			case 8 :
+				TextureManager::draw(m_monster_wall, m_srcRect, m_destRect);
+				break;
+			case 9 :
+				TextureManager::draw(m_hole_wall, m_srcRect, m_destRect);
+				break;
+			case 10 :
+				TextureManager::draw(m_right_of_wall, m_srcRect, m_destRect);
+				break;
+			case 11 :
+				TextureManager::draw(m_left_of_wall, m_srcRect, m_destRect);
+				break;
+			case 12 :
+				TextureManager::draw(m_top_of_wall, m_srcRect, m_destRect);
+				break;
+			case 13 :
+				TextureManager::draw(m_bottom_of_wall, m_srcRect, m_destRect);
 				break;
 			default:
 				break;

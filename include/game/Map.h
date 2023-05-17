@@ -31,8 +31,20 @@ private :
 	//Texture des cases
 	SDL_Rect m_srcRect, m_destRect;
 
+	SDL_Texture* m_black;
 	SDL_Texture* m_floor;
-	SDL_Texture* m_grass;
+	SDL_Texture* m_dirt;
+	SDL_Texture* m_rock;
+	SDL_Texture* m_tainted_floor;
+	SDL_Texture* m_tainted_dirt;
+	SDL_Texture* m_tainted_rock;
+	SDL_Texture* m_wall;
+	SDL_Texture* m_monster_wall;
+	SDL_Texture* m_hole_wall;
+	SDL_Texture* m_right_of_wall;
+	SDL_Texture* m_left_of_wall;
+	SDL_Texture* m_top_of_wall;
+	SDL_Texture* m_bottom_of_wall;
 
 public :
 
