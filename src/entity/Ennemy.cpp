@@ -16,7 +16,7 @@ void Ennemy::update(Vector2<int> const& target) {
 
 	if (m_health <= 0) {
 		//delete this; fait planter (probleme de mémoire)
-		setStatus(Status::DESTROY); //Status est privé dans ce contexte donc ca ne compile pas
+		//setStatus(Status::DESTROY); //Status est privé dans ce contexte donc ca ne compile pas
 	}
 	GameObject::update();
 }
