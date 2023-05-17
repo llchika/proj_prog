@@ -42,6 +42,14 @@ public:
     const Vector2<int> & getDirection() const {
         return m_direction;
     }
+
+    int getHealth() const {
+        return m_health;
+    }
+
+    void setHealth(int health) {
+        m_health = health;
+    }
 };
 
 #endif

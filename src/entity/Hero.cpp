@@ -1,6 +1,7 @@
 #include <Hero.h>
 #include <iostream>
 #include <Renderer.h>
+#include <Collision.h>
 
 Hero::Hero(Map* map, const char* textureSheet, const Vector2<int>& position, std::string name)
 : Entity(map, textureSheet, position, name), m_direction(Vector2<int>(0,0)), m_pos_camera(Vector2<int>(500,500))

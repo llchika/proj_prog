@@ -37,6 +37,28 @@ void Game::gameLoop() {
 	while (m_gameState!=GameState::EXIT) {
 		while (m_gameState==GameState::PLAY) {
 			m_frameStart=SDL_GetTicks();
+
+
+            //surement gourmdand, si c'est trop lent changer de place
+            std::vector<Entity*> allCollide = Collision::allCollide(m_hero, m_hero->getPosition());
+            for (Entity* e : allCollide) {
+                //type id name without the fist char
+                std::string typeName = typeid(*e).name();
+                typeName = typeName.substr(1, typeName.length() - 1);
+                if(typeName == "Ennemy")
+                {
+                    std::cout << "Ennemy" << std::endl;
+                    m_hero->setHealth(m_hero->getHealth()-1);
+                    
+                }
+                if(typeName == "Mouse")
+                {
+                    std::cout << "mouse" << std::endl;
+                    //pour tester 
+                    m_hero->setHealth(m_hero->getHealth()-1);
+                    
+                }
+            }
 			
             
 	        //std::cout << m_hero->getDirection()[0] << ", " << m_hero->getDirection()[1] << std::endl;
