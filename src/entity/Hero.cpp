@@ -2,6 +2,10 @@
 #include <iostream>
 #include <Renderer.h>
 #include <Collision.h>
+#include <Ennemy.h>
+#include <set>
+
+
 
 Hero::Hero(Map* map, const char* textureSheet, const Vector2<int>& position, std::string name)
 : Entity(map, textureSheet, position, name), m_direction(Vector2<int>(0,0)), m_pos_camera(Vector2<int>(500,500))
@@ -14,6 +18,26 @@ Hero::~Hero() {}
 
 void Hero::update() {
 	m_pos_camera=m_pos_camera+m_direction;
+
+	
+
+	//move all entities not of hero type in the opposite direction
+
+	for (std::set<Entity*>::iterator it = Entity::m_entity.begin(); it != Entity::m_entity.end(); ++it)
+	{
+		std::string typeName = typeid(**it).name();
+        typeName = typeName.substr(1, typeName.length() - 1);
+		if(typeName == "Ennemy")
+		{
+			Ennemy* ennemy = dynamic_cast<Ennemy*>(*it);
+			ennemy->setPosition(ennemy->getPosition()-m_direction);
+
+
+		}
+		
+	}
+
+
 	GameObject::update();
 
 	//load hearts
@@ -29,10 +53,13 @@ void Hero::update() {
 
 void Hero::modif_dir(sens direction) {
 	m_direction=Vector2<int>(0,0);
+	std::cout << "direction: " << getDirection()[0] << " " << getDirection()[1] << std::endl;
+
 	switch (direction) {
 		case sens::UP:
 			if (Hero::GameObject::getPosition()[0]>0) {
 				m_direction=m_direction+Vector2<int>(-1,0);
+
 			}
 			break;
 		case sens::DOWN:

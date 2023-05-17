@@ -11,6 +11,7 @@ private:
     int m_speed;
     int const MAXHEALTH;
     int m_health;
+    float m_timer;
 
 public:
 
@@ -25,6 +26,14 @@ public:
 
     int getHealth() const {
         return m_health;
+    }
+
+    void setTimer(float timer) {
+        m_timer = timer;
+    }
+
+    float getTimer() const {
+        return m_timer;
     }
     
 

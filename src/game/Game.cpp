@@ -61,7 +61,8 @@ void Game::gameLoop() {
                 }
                 if(typeName == "Mouse")
                 {
-                    std::cout << "mouse" << std::endl;                    
+                    std::cout << "mouse" << std::endl;
+                    //m_hero->setHealth(m_hero->getHealth()-1);                    
                 }
 
                 //game over
@@ -96,7 +97,6 @@ void Game::handleEvent() {
         {
             //get mouse position to put the mouse on the map
             m_mouse->update(Vector2<int>(event.motion.y/32,event.motion.x/32));
-
 
         }
         else if (event.type == SDL_KEYDOWN && event.key.repeat == 0) {
@@ -200,6 +200,16 @@ void Game::loadMap(std::string filename) {
 
     m_hero=new Hero(m_map, "ressources/player/fromage.png", Vector2<int>(10, 16), "Fromage");
     m_mouse=new Mouse(m_map, "ressources/player/fireball.png", Vector2<int>(10, 0), "SuperMouse");
+}
+
+void Game::loadGameOver() {
+    delete m_map;
+    for (std::set<Entity*>::iterator it = Entity::m_entity.begin(); it != Entity::m_entity.end(); ++it)
+    {
+        (*it)->setStatus(Entity::Status::DESTROY);
+    }
+	m_map=new Map("ressources/maps/game_over.csv");
+	
 }
 
 //remove the ennemy from the vector
