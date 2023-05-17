@@ -93,8 +93,6 @@ void Game::gameLoop() {
 				SDL_Delay(_frameDelay - m_frameTime);
 			}
 
-            //print count
-            std::cout << "count : " << count << std::endl;
             if(count%30==0){
                 spawnEnnemy();
             }
