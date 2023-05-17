@@ -46,7 +46,8 @@ void Game::gameLoop() {
 		while (m_gameState==GameState::PLAY) {
 			m_frameStart=SDL_GetTicks();
 
-
+            bool isTouchEnnemy = false;
+            int nbEnnemy = 0;
             //surement gourmand, si c'est trop lent changer de place
             std::vector<Entity*> allCollide = Collision::allCollide(m_hero, m_hero->getPosition());
             for (Entity* e : allCollide) {
@@ -56,7 +57,12 @@ void Game::gameLoop() {
                 if(typeName == "Ennemy") {
                     //manque invulnerabilite tempo
                     //std::cout << "Ennemy" << std::endl;
-                    m_hero->setHealth(m_hero->getHealth()-1);
+                    isTouchEnnemy = true;
+                    if (!isInvincible) {
+                        m_hero->setHealth(m_hero->getHealth()-1);
+                        isInvincible = true;
+                    }
+                    nbEnnemy++;
                     
                 }
                 if(typeName == "Mouse") {
@@ -68,6 +74,8 @@ void Game::gameLoop() {
                 }
 
             }
+            if(!isTouchEnnemy || nbEnnemy >=5)
+                isInvincible = false;
 
             std::vector<Entity*> allCollide2 = Collision::allCollide(m_mouse, m_mouse->getPosition());
             for (Entity* e : allCollide2) {
@@ -83,11 +91,11 @@ void Game::gameLoop() {
                         m_ennemies.erase(it);
                     }
 
-                    if (count_kill==50) {
+                    if (count_kill==75) {
                         (*m_map).cave=true;
                         m_map->loadMap("ressources/maps/map_lvl2.csv");
                     }
-                    if (count_kill%50==0) {
+                    if (count_kill%75==0) {
                         m_hero->MAXHEALTH+=1;
                     }
                     if (count_kill%50==0) {
