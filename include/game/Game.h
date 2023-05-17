@@ -36,7 +36,8 @@ private :
 
 	std::vector<Ennemy*> m_ennemies;
 
-public :
+public:
+	int count_kill;
 	/**
 	 * Constructeur de la fenêtre de jeu
 	 * @param width: Largeur de la fenêtre

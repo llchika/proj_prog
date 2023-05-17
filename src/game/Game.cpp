@@ -5,7 +5,7 @@
 #include <vector>
 
 
-Game::Game(unsigned int width, unsigned int height): count(0) {
+Game::Game(unsigned int width, unsigned int height): count(0), count_kill(0) {
 	// 1 - Initialization of SDL
 	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS) != 0) {
 		SDL_Log("Unable to initialize SDL: %s", SDL_GetError());
@@ -73,12 +73,17 @@ void Game::gameLoop() {
                 std::string typeName = typeid(*e).name();
                 typeName = typeName.substr(1, typeName.length() - 1);
                 if(typeName == "Ennemy") {
+                    count_kill++;
                     Ennemy * tmp=dynamic_cast<Ennemy*>(e);
                     auto it = std::find_if( m_ennemies.begin(), m_ennemies.end(),
                         [&]( Ennemy *f ) { return ( f==tmp ); } );
 
                     if (it!= m_ennemies.end()) {
                         m_ennemies.erase(it);
+                    }
+
+                    if (count_kill==50) {
+                        (*m_map).cave=true;
                     }
                 }
             }
