@@ -9,6 +9,12 @@ static std::set<Entity*> m_entity;
 
 class Collision {	
     public:
+        /// <summary>
+        /// Test si une Entity est en collision avec d'autres Entity
+        /// </summary>
+        /// <param name="e">Entity à tester</param>
+        /// <param name="position">Position de l'Entity à tester</param>
+        /// <returns> Retourne la listes de tout les Entity qui sont en collision avec l'Entity e </returns>
         static std::vector<Entity*> allCollide(Entity *e , Vector2<int> position) 
         {
             std::vector<Entity*> res = std::vector<Entity*>();
@@ -20,7 +26,12 @@ class Collision {
             }
             return res;
         }
-
+        /// <summary>
+        /// Test si deux Entity sont en collision
+        /// </summary>
+        /// <param name="e1">Entity 1</param>
+        /// <param name="e2">Entity 2</param>
+        /// <returns> Retourne vrai si les deux Entity sont en collision, faux sinon </returns>
         static bool isCollideWith(Entity *e1, Entity *e2)
         {
             Vector2<int> pos = e1->getPosition();
@@ -32,6 +43,12 @@ class Collision {
         }
 
     private:
+        /// <summary>
+        /// Test si les 4 points de l'Entity sont en collision
+        /// </summary>
+        /// <param name="e1">Entity 1</param>
+        /// <param name="e2">Entity 2</param>
+        /// <returns> retourne vrai si au moins 1 point de Entity 2 est </returns>
         static bool testIfCollide(Entity *e1, Entity *e2, Vector2<int>& position)
         {
             Vector2<int> e2Pos = e2->getPosition();

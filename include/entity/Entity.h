@@ -5,6 +5,10 @@
 #include <string>
 #include <GameObject.h>
 
+/**
+*  classe de base pour toutes les entités du jeu.
+*/
+
 class Entity : public GameObject {
 public:
 
@@ -19,18 +23,18 @@ public:
 		Id();
 		bool operator==(Id const& id) const;
 	};
-static std::set<Entity*> m_entity;
-enum class Status { RUNNING, DESTROY };
-private :
+	static std::set<Entity*> m_entity;
+	enum class Status { RUNNING, DESTROY };
+	private :
 	//Status 
 		
 	Status m_status;
 
-	//Liste de toutes les entit�s du jeu
+	//Liste de toutes les entités du jeu
 	
 	Id m_id;
 
-	//Caract�ristiques du l'entit�.
+	//Caractéristiques du l'entité.
 	std::string m_name;
 
 	Vector2<int> m_size;
@@ -41,9 +45,9 @@ public :
 	/// Constructeur
 	/// </summary>
 	/// <param name="map">Carte du jeu</param>
-	/// <param name="textureSheet">Texture de l'entit�</param>
-	/// <param name="position">Position de l'entit�</param>
-	/// <param name="name">Nom de l'entit�</param>
+	/// <param name="textureSheet">Texture de l'entité</param>
+	/// <param name="position">Position de l'entité</param>
+	/// <param name="name">Nom de l'entité</param>
 	Entity(Map* map, const char* textureSheet, const Vector2<int>& position, std::string name);
 	virtual ~Entity();
 

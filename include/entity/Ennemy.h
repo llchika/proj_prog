@@ -4,6 +4,10 @@
 #include <string>
 #include <Entity.h>
 
+/**
+* représente les différents ennemis du jeu.
+*/
+
 class Ennemy : public Entity {
 public:
 
@@ -19,35 +23,27 @@ public:
     Ennemy(Map* map, const char* textureSheet, const Vector2<int>& position, std::string name, bool m_target=true);
     virtual ~Ennemy();
 
-    /// <summary>
-    /// Fonction permettant de mettre à la position de l'ennemi et son affichage.
+    /**
+    * \brief Fonction permettant de mettre à jour la position de l'ennemi et son affichage.
+    * @param target : position de la cible de l'ennemi.
+    */
     void update(Vector2<int> const& target);
     
-    /// <summary>
-    /// Mise à jour de la santé de l'ennemi.
     void setHealth(int health) {
         m_health = health;
     }
 
-    /// <summary>
-    /// Récupération de la santé de l'ennemi.
     int getHealth() const {
         return m_health;
     }
 
-    /// <summary>
-    /// Mise à jour du timer de l'ennemi. (utilisé pour ses déplacements)
     void setTimer(float timer) {
         m_timer = timer;
     }
 
-    /// <summary>
-    /// Récupération du timer de l'ennemi.
     float getTimer() const {
         return m_timer;
     }
-    
-
 };
 
 #endif

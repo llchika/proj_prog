@@ -4,6 +4,10 @@
 #include <string>
 #include <Entity.h>
 
+/*
+* Classe qui gère les differents objets
+*/
+
 class Item : public Entity {
 public:
 private:
@@ -12,9 +16,9 @@ public:
     Item(Map* map, const char* textureSheet, const Vector2<int>& position, std::string name);
     virtual ~Item();
 
-    /// <summary>
-    /// Fonction permettant de mettre � jour les caract�ristiques du h�ro.
-    /// </summary>
+    /**
+    * \brief Fonction qui met à jour la position de l'objet et son affichage
+    */
     void update();
 };
 

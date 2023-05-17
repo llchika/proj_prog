@@ -4,17 +4,21 @@
 #include <string>
 #include <Entity.h>
 
+/*
+* Gestion de la souris du joueur (déplacement et attaque)
+*/
+
 class Mouse : public Entity {
 public:
 private:
 public:
-    /// <summary>
     /// Constructeur
     Mouse(Map* map, const char* textureSheet, const Vector2<int>& position, std::string name);
     virtual ~Mouse();
 
-    /// <summary>
-    /// Fonction permettant de mettre à jour la position de la souris et son affichage.
+    /**
+    * \brief Met à jour la boule de feu
+    */
     void update(Vector2<int> mousePose);
 };
 
