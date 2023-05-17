@@ -52,24 +52,19 @@ void Game::gameLoop() {
                 //type id name without the fist char
                 std::string typeName = typeid(*e).name();
                 typeName = typeName.substr(1, typeName.length() - 1);
-                if(typeName == "Ennemy")
-                {
+                if(typeName == "Ennemy") {
                     //manque invulnerabilite tempo
                     std::cout << "Ennemy" << std::endl;
                     m_hero->setHealth(m_hero->getHealth()-1);
                     
                 }
-                if(typeName == "Mouse")
-                {
+                if(typeName == "Mouse") {
                     std::cout << "mouse" << std::endl;
                     //m_hero->setHealth(m_hero->getHealth()-1);                    
                 }
-
                 //game over
-                if(m_hero->getHealth()<=0)
-                {
+                if(m_hero->getHealth()<=0) {
                     m_gameState=GameState::DEAD;
-                    std::cout << "game over" << std::endl;
                 }
             }
 			
@@ -82,6 +77,13 @@ void Game::gameLoop() {
 				SDL_Delay(_frameDelay - m_frameTime);
 			}
 		}
+        while (m_gameState==GameState::DEAD) {
+            m_frameStart=SDL_GetTicks();
+
+            handleEvent();
+			render();
+
+        }
 	}
 }
 
@@ -106,8 +108,10 @@ void Game::handleEvent() {
                 m_gameState = GameState::EXIT;
                 break;
             case 'e':
-                std::cout << "Lancement du jeu" << ::std::endl;
-                m_gameState = GameState::PLAY;
+                if (m_gameState!=GameState::PLAY) {
+                    std::cout << "Lancement du jeu" << ::std::endl;
+                    m_gameState = GameState::PLAY;
+                }
                 break;
             case SDLK_UP:
                 m_hero->modif_dir(Hero::sens::UP);
