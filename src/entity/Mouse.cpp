@@ -32,7 +32,7 @@ void Mouse::update(Vector2<int> mousePos){
             ennemy->setHealth(ennemy->getHealth()-1);
             if(ennemy->getHealth()<=0)
             {
-                //game->removeEnnemy(ennemy);
+ 
             }
         }
         if(typeName == "Mouse")
