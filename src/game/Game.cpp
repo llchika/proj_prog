@@ -47,6 +47,7 @@ void Game::gameLoop() {
 			m_frameStart=SDL_GetTicks();
 
             bool isTouchEnnemy = false;
+            bool isTouchHeart = false;
             int nbEnnemy = 0;
             //surement gourmand, si c'est trop lent changer de place
             std::vector<Entity*> allCollide = Collision::allCollide(m_hero, m_hero->getPosition());
@@ -82,12 +83,17 @@ void Game::gameLoop() {
                     if (it!= m_items.end()) {
                         m_items.erase(it);
                     }
-                    m_hero->setHealth(m_hero->getHealth()+1);      
+                    if (!isHeartInvincible) {
+                        m_hero->setHealth(m_hero->getHealth()+1);    
+                        isHeartInvincible = true;
+                    }  
                 }
 
             }
             if(!isTouchEnnemy || nbEnnemy >=5)
                 isInvincible = false;
+            if(!isTouchHeart)
+                isHeartInvincible = false;
 
             std::vector<Entity*> allCollide2 = Collision::allCollide(m_mouse, m_mouse->getPosition());
             for (Entity* e : allCollide2) {

@@ -37,6 +37,7 @@ private :
 
 	std::vector<Ennemy*> m_ennemies;
 	bool isInvincible;
+	bool isHeartInvincible;
 
 public :
 
