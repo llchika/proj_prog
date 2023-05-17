@@ -1,14 +1,21 @@
-#ifndef ITEM_H
-#define ITEM_H
+#ifndef _Item_H
+#define _Item_H
 
-class Item {
+#include <string>
+#include <Entity.h>
+
+class Item : public Entity {
 public:
-    enum class objet {xp, mana};
+private:
+public:
 
-    objet m_objet;
-    int m_value;
+    Item(Map* map, const char* textureSheet, const Vector2<int>& position, std::string name);
+    virtual ~Item();
 
-    Item(objet objet, int value) : m_value(value), m_objet(objet) {}
+    /// <summary>
+    /// Fonction permettant de mettre � jour les caract�ristiques du h�ro.
+    /// </summary>
+    void update();
 };
 
 #endif
