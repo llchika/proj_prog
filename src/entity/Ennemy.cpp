@@ -12,8 +12,7 @@ void Ennemy::update(Vector2<int> const& target) {
 	
 	if (m_timer > 30) {
 
-		if(m_target)
-		{
+		if(m_target) {
 			if (getPosition()[0] < target[0]) {
 				setPosition(Vector2<int>(getPosition()[0] + m_speed, getPosition()[1]));
 			}
@@ -26,9 +25,7 @@ void Ennemy::update(Vector2<int> const& target) {
 			else if (getPosition()[1] > target[1]) {
 				setPosition(Vector2<int>(getPosition()[0], getPosition()[1] - m_speed));
 			}
-		}
-		else
-		{
+		} else {
 			//random deplace de 1 case
 			int random = rand() % 4;
 			switch (random) {
@@ -46,16 +43,7 @@ void Ennemy::update(Vector2<int> const& target) {
 				break;
 			}
 		}
-
-
-
 		m_timer = 0;
-	}
-
-
-	if (m_health <= 0) {
-		//delete this; fait planter (probleme de mémoire)
-		//setStatus(Status::DESTROY); //Status est privé dans ce contexte donc ca ne compile pas
 	}
 	GameObject::update();
 	m_timer += 1;

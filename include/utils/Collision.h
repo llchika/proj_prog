@@ -48,7 +48,8 @@ class Collision {
         /// </summary>
         /// <param name="e1">Entity 1</param>
         /// <param name="e2">Entity 2</param>
-        /// <returns> retourne vrai si au moins 1 point d'Entity 2 est en collision avec Entity </returns>
+        /// <param name="position">Position de l'Entity à tester</param>
+        /// <returns> retourne vrai si au moins 1 point d'Entity 2 est en collision avec Entity 1 </returns>
         static bool testIfCollide(Entity *e1, Entity *e2, Vector2<int>& position)
         {
             Vector2<int> e2Pos = e2->getPosition();

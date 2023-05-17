@@ -4,17 +4,18 @@
 #include <string>
 #include <Entity.h>
 
+/**
+* Classe représentant un obstacle
+*/
+
 class Obstacle : public Entity {
 public:
-private:
-public:
-
     Obstacle(Map* map, const char* textureSheet, const Vector2<int>& position, std::string name);
     virtual ~Obstacle();
 
-    /// <summary>
-    /// Fonction permettant de mettre � jour les caract�ristiques du h�ro.
-    /// </summary>
+    /**
+     * Met à jour l'obstacle
+    */
     void update();
 };
 

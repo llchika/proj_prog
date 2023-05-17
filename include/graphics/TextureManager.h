@@ -9,18 +9,18 @@
 class TextureManager {
 
 public :
-	/// <summary>
-	/// Cr�� et retourne la texture charg�e � partir d'un fichier.
-	/// </summary>
-	/// <param name="filename">nom du fichier</param>
-	/// <returns>Texture</returns>
+	/**
+	 * Retourne une texture chargée à partir d'un fichier.
+	 * @param filename: Path du fichier à charger
+	*/
 	static SDL_Texture* loadTexture(const char* filename);
-	/// <summary>
-	/// Dessine la texture sur la fen�tre au niveau du rectangle.
-	/// </summary>
-	/// <param name="texture">Texture � dessiner</param>
-	/// <param name="src">position du rectangle</param>
-	/// <param name="dest">position du rectangle</param>
+	
+	/**
+	 * Dessine une texture
+	 * @param texture: Texture à dessiner
+	 * @param src: Rectangle source
+	 * @param dest: Rectangle destination
+	*/
 	static void draw(SDL_Texture* texture, SDL_Rect src, SDL_Rect dest);
 };
 

@@ -5,6 +5,10 @@
 #include <Entity.h>
 #include <constantes.h>
 
+/**
+* Personnage contrôlé par le joueur.
+*/
+
 class Hero : public Entity {
 public:
     enum class sens {UP, DOWN, RIGHT, LEFT, NONE};
@@ -17,45 +21,47 @@ private:
 
 public:
     int MAXHEALTH;
-    /// <summary>
-    /// Constructeur de Hero
-    /// </summary>
-    /// <param name="map">Carte</param>
-    /// <param name="textureSheet">Texture du h�ro</param>
-    /// <param name="position">Position initiale du h�ro</param>
-    /// <param name="name">Nom du h�ro</param>
+    
+    /**
+     * Constructeur
+    */
     Hero(Map* map, const char* textureSheet, const Vector2<int>& position, std::string name);
     virtual ~Hero();
 
-    /// <summary>
-    /// Fonction permettant de mettre � jour les caract�ristiques du h�ro.
-    /// </summary>
+    /**
+     * Met à jour le héros
+    */
     virtual void update();
 
-    /// <summary>
-    /// Fonction permettant de deplacer le héros.
+    /**
+     * Calcule la nouvelle position du héros
+    */
     void modif_dir(sens direction);
 
-    /// <summary>
-    /// Pour récupérer la position de la caméra.
+    /**
+     * Récupère la position de la caméra
+    */
     const Vector2<int> & getCamera() const {
         return m_pos_camera;
     }
 
-    /// <summary>
-    /// Pour récupérer la direction du héros.
+    /**
+     * Récupère la direction du héros
+    */
     const Vector2<int> & getDirection() const {
         return m_direction;
     }
 
-    /// <summary>
-    /// Pour récupérer la santé du héros.
+    /**
+     * Récupère la vie du héros
+    */
     int getHealth() const {
         return m_health;
     }
 
-    /// <summary>
-    /// Pour modifier la santé du héros.
+    /**
+     * Change la vie du héros
+    */
     void setHealth(int health) {
         m_health = health;
     }

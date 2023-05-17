@@ -8,6 +8,6 @@ Obstacle::Obstacle(Map* map, const char* textureSheet, const Vector2<int>& posit
 
 Obstacle::~Obstacle() {}
 
-void Obstacle::update(){
+void Obstacle::update() {
     //GameObject::update();
 }

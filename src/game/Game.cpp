@@ -282,17 +282,6 @@ void Game::loadMap(std::string filename) {
 
 }
 
-/*
-void Game::loadGameOver() {
-    delete m_map;
-    for (std::set<Entity*>::iterator it = Entity::m_entity.begin(); it != Entity::m_entity.end(); ++it)
-    {
-        (*it)->setStatus(Entity::Status::DESTROY);
-    }
-	m_map=new Map("ressources/maps/game_over.csv");
-	
-}*/
-
 //remove the ennemy from the vector
 void Game::removeEnnemy(Ennemy* ennemy){
     std::cout << "remove ennemy" << std::endl;
