@@ -82,6 +82,13 @@ void Game::gameLoop() {
 				SDL_Delay(_frameDelay - m_frameTime);
 			}
 		}
+        while (m_gameState==GameState::DEAD) {
+            m_frameStart=SDL_GetTicks();
+
+            handleEvent();
+			render();
+
+        }
 	}
 }
 
@@ -106,8 +113,10 @@ void Game::handleEvent() {
                 m_gameState = GameState::EXIT;
                 break;
             case 'e':
-                std::cout << "Lancement du jeu" << ::std::endl;
-                m_gameState = GameState::PLAY;
+                if (m_gameState!=GameState::PLAY) {
+                    std::cout << "Lancement du jeu" << ::std::endl;
+                    m_gameState = GameState::PLAY;
+                }
                 break;
             case SDLK_UP:
                 m_hero->modif_dir(Hero::sens::UP);

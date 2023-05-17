@@ -31,12 +31,9 @@ void Hero::update() {
 		{
 			Ennemy* ennemy = dynamic_cast<Ennemy*>(*it);
 			ennemy->setPosition(ennemy->getPosition()-m_direction);
-
-
 		}
 		
 	}
-
 
 	GameObject::update();
 
@@ -53,8 +50,6 @@ void Hero::update() {
 
 void Hero::modif_dir(sens direction) {
 	m_direction=Vector2<int>(0,0);
-	std::cout << "direction: " << getDirection()[0] << " " << getDirection()[1] << std::endl;
-
 	switch (direction) {
 		case sens::UP:
 			if (Hero::GameObject::getPosition()[0]>0) {
