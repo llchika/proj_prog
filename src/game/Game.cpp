@@ -84,7 +84,6 @@ void Game::gameLoop() {
                     }
                     isTouchHeart = true;
                     if (!isHeartInvincible) {
-                        std::cout << "ok" << std::endl;
                         m_hero->setHealth(m_hero->getHealth()+2);    
                         isHeartInvincible = true;
                     }  
