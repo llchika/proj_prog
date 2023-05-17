@@ -158,8 +158,6 @@ void Game::endGame() {
 
 void Game::loadMap(std::string filename) {
 	m_map=new Map(filename);
-	m_hero=new Hero(m_map, "ressources/player/fromage.png", Vector2<int>(10, 16), "Fromage");
-    m_mouse=new Mouse(m_map, "ressources/player/fireball.png", Vector2<int>(10, 0), "SuperMouse");
     //load ennemies
     for(int i=0;i<10;i+=2){
         m_ennemies.push_back(new Ennemy(m_map, "ressources/player/p1_walk01.png", Vector2<int>(i, 0), "SuperEnnemy"));
