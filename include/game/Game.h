@@ -12,7 +12,7 @@
 class Game {
 private :
 	// État du jeu
-	enum class GameState {INIT, PLAY, EXIT};
+	enum class GameState {INIT, PLAY, DEAD, EXIT};
 
 	// Paramètres
 	GameState m_gameState;	// État du jeu
@@ -52,7 +52,6 @@ public :
 	
 
 private :
-
 	/**
 	 * Boucle du jeu, gère toutes les étapes du jeu
 	*/
@@ -82,7 +81,7 @@ private :
 	 * Charger une map
 	 * @param filename: Path de la map
 	*/
-	void loadMap(std::string filename = "ressources/maps/map_lvl1.csv");
+	void loadMap(std::string filename="ressources/maps/map_lvl1.csv");
 
 	//remove ennemy from the vector
 	void removeEnnemy(Ennemy* ennemy);

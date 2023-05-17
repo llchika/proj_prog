@@ -11,7 +11,7 @@ namespace JeuESIR {
 	static const int maxScreenRow=21;
 	static const int demiCol=16;
 	static const int demiRow=10;
-	static const int screenWidth=tileSize*maxScreenCol;	  //480
-	static const int screenHeight=tileSize*maxScreenRow;  //608*/
+	static const int screenWidth=tileSize*maxScreenCol;	  // 1056
+	static const int screenHeight=tileSize*maxScreenRow;  // 672
 }
 #endif
