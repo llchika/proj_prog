@@ -14,8 +14,7 @@ Mouse::~Mouse() {}
 
 void Mouse::update(Vector2<int> mousePos){
     setPosition(mousePos);
-
-    std::vector<Entity*> allCollide = Collision::allCollide(this, getPosition());
+    /*std::vector<Entity*> allCollide = Collision::allCollide(this, getPosition());
     //echo type of allCollide
     for (Entity* entity : allCollide) {
         //type id name without the fist char
@@ -29,16 +28,12 @@ void Mouse::update(Vector2<int> mousePos){
             //je vois pas comment le supprimer sans avoir une liste static dans game (sinon ca crash)
             // il faut le caster en ennemy pour pouvoir réduire sa vie
             Ennemy* ennemy = dynamic_cast<Ennemy*>(entity);
-            ennemy->setHealth(ennemy->getHealth()-1);
-            if(ennemy->getHealth()<=0)
-            {
- 
-            }
+            
         }
         if(typeName == "Mouse")
         {
             std::cout << "mouse" << std::endl;         
         }
-    }
+    }*/
     GameObject::update();
 }
