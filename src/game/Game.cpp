@@ -72,6 +72,18 @@ void Game::gameLoop() {
                 if(m_hero->getHealth()<=0) {
                     m_gameState=GameState::DEAD;
                 }
+                                //augment health
+                if(typeName == "Hearth" && m_hero->getHealth()<m_hero->MAXHEALTH) {
+                    
+                    Hearth * tmp=dynamic_cast<Hearth*>(e);
+                    auto it = std::find_if( m_items.begin(), m_items.end(),
+                        [&]( Item *f ) { return ( f==tmp ); } );
+
+                    if (it!= m_items.end()) {
+                        m_items.erase(it);
+                    }
+                    m_hero->setHealth(m_hero->getHealth()+1);      
+                }
 
             }
             if(!isTouchEnnemy || nbEnnemy >=5)
@@ -81,6 +93,7 @@ void Game::gameLoop() {
             for (Entity* e : allCollide2) {
                 std::string typeName = typeid(*e).name();
                 typeName = typeName.substr(1, typeName.length() - 1);
+
                 if(typeName == "Ennemy") {
                     count_kill++;
                     Ennemy * tmp=dynamic_cast<Ennemy*>(e);
@@ -91,7 +104,7 @@ void Game::gameLoop() {
                         m_ennemies.erase(it);
                     }
 
-                    if (count_kill==75) {
+                    if (count_kill==120) {
                         (*m_map).cave=true;
                         m_map->loadMap("ressources/maps/map_lvl2.csv");
                     }
@@ -103,17 +116,11 @@ void Game::gameLoop() {
                             m_hero->setHealth(m_hero->getHealth());
                         }
                     }
-                }
-                //augment health
-                if(typeName == "Hearth" && m_hero->getHealth()<m_hero->MAXHEALTH) {
-                    Hearth * tmp=dynamic_cast<Hearth*>(e);
-                    auto it = std::find_if( m_items.begin(), m_items.end(),
-                        [&]( Item *f ) { return ( f==tmp ); } );
+                    Vector2<int> pos = tmp->getPosition();
 
-                    if (it!= m_items.end()) {
-                        m_items.erase(it);
+                    if (rand()%100==0) {
+                        m_items.push_back(new Hearth(m_map, "ressources/tiles/rogue/tile_0102.png", pos, "Hearth"));
                     }
-                    m_hero->setHealth(m_hero->getHealth()+1);      
                 }
             }
 
@@ -266,10 +273,6 @@ void Game::loadMap(std::string filename) {
     m_hero=new Hero(m_map, "ressources/player/fromage.png", Vector2<int>(10, 16), "Fromage");
     m_mouse=new Mouse(m_map, "ressources/player/fireball.png", Vector2<int>(10, 0), "SuperMouse");
 
-    //load items
-    for(int i=0;i<10;i+=2){
-        m_items.push_back(new Hearth(m_map, "ressources/tiles/rogue/tile_0102.png", Vector2<int>(i, 0), "Hearth"));
-    }
 }
 
 /*
