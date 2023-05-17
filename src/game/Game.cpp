@@ -97,10 +97,10 @@ void Game::gameLoop() {
                     }
                 }
                 //augment health
-                if(typeName == "Item" && m_hero->getHealth()<m_hero->getMaxHealth()) {
+                if(typeName == "Hearth" && m_hero->getHealth()<m_hero->MAXHEALTH) {
                     Hearth * tmp=dynamic_cast<Hearth*>(e);
                     auto it = std::find_if( m_items.begin(), m_items.end(),
-                        [&]( Hearth *f ) { return ( f==tmp ); } );
+                        [&]( Item *f ) { return ( f==tmp ); } );
 
                     if (it!= m_items.end()) {
                         m_items.erase(it);
@@ -257,6 +257,11 @@ void Game::loadMap(std::string filename) {
 
     m_hero=new Hero(m_map, "ressources/player/fromage.png", Vector2<int>(10, 16), "Fromage");
     m_mouse=new Mouse(m_map, "ressources/player/fireball.png", Vector2<int>(10, 0), "SuperMouse");
+
+    //load items
+    for(int i=0;i<10;i+=2){
+        m_items.push_back(new Hearth(m_map, "ressources/tiles/rogue/tile_0102.png", Vector2<int>(i, 0), "Hearth"));
+    }
 }
 
 /*

@@ -9,5 +9,5 @@ Item::Item(Map* map, const char* textureSheet, const Vector2<int>& position, std
 Item::~Item() {}
 
 void Item::update(){
-    //
+    GameObject::update();
 }

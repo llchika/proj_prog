@@ -4,6 +4,7 @@
 #include <Collision.h>
 #include <Ennemy.h>
 #include <set>
+#include <Item.h>
 
 
 
@@ -28,6 +29,11 @@ void Hero::update() {
 		{
 			Ennemy* ennemy = dynamic_cast<Ennemy*>(*it);
 			ennemy->setPosition(ennemy->getPosition()-m_direction);
+		}
+		else if (typeName == "Hearth")
+		{
+			Item* item = dynamic_cast<Item*>(*it);
+			item->setPosition(item->getPosition()-m_direction);
 		}
 	}
 
