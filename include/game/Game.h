@@ -40,6 +40,8 @@ private :
 	std::vector<Item*> m_items;
 
 public :
+public:
+	int count_kill;
 	/**
 	 * Constructeur de la fenêtre de jeu
 	 * @param width: Largeur de la fenêtre
