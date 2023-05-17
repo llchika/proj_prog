@@ -59,14 +59,29 @@ void Game::gameLoop() {
                     
                 }
                 if(typeName == "Mouse") {
-                    //std::cout << "mouse" << std::endl;
-                    //m_hero->setHealth(m_hero->getHealth()-1);                    
+                    //std::cout << "mouse" << std::endl;            
                 }
                 //game over
                 if(m_hero->getHealth()<=0) {
                     m_gameState=GameState::DEAD;
                 }
             }
+
+            std::vector<Entity*> allCollide2 = Collision::allCollide(m_mouse, m_mouse->getPosition());
+            for (Entity* e : allCollide2) {
+                std::string typeName = typeid(*e).name();
+                typeName = typeName.substr(1, typeName.length() - 1);
+                if(typeName == "Ennemy") {
+                    Ennemy * tmp=dynamic_cast<Ennemy*>(e);
+                    auto it = std::find_if( m_ennemies.begin(), m_ennemies.end(),
+                        [&]( Ennemy *f ) { return ( f==tmp ); } );
+
+                    if (it!= m_ennemies.end()) {
+                        m_ennemies.erase(it);
+                    }
+                }
+            }
+
 			
 			handleEvent();
 			update();
