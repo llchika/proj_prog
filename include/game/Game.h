@@ -8,6 +8,7 @@
 #include <TextureManager.h>
 #include <Timer.h>
 #include <Ennemy.h>
+#include <Item.h>
 
 class Game {
 private :
@@ -36,9 +37,13 @@ private :
 
 	std::vector<Ennemy*> m_ennemies;
 	bool isInvincible;
+	bool isHeartInvincible;
 
 public :
 
+	std::vector<Item*> m_items;
+
+public :
 	int count_kill;
 	/**
 	 * Constructeur de la fenêtre de jeu
@@ -90,6 +95,7 @@ private :
 	void removeEnnemy(Ennemy* ennemy);
 
 	void spawnEnnemy();
+
 
 
 };

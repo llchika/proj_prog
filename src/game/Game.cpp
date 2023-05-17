@@ -3,6 +3,7 @@
 #include <Collision.h>
 #include <Entity.h>
 #include <vector>
+#include <Hearth.h>
 
 
 Game::Game(unsigned int width, unsigned int height): count(0), count_kill(0) {
@@ -46,6 +47,7 @@ void Game::gameLoop() {
 			m_frameStart=SDL_GetTicks();
 
             bool isTouchEnnemy = false;
+            bool isTouchHeart = false;
             int nbEnnemy = 0;
             //surement gourmand, si c'est trop lent changer de place
             std::vector<Entity*> allCollide = Collision::allCollide(m_hero, m_hero->getPosition());
@@ -71,15 +73,33 @@ void Game::gameLoop() {
                 if(m_hero->getHealth()<=0) {
                     m_gameState=GameState::DEAD;
                 }
+                                //augment health
+                if(typeName == "Hearth" && m_hero->getHealth()<m_hero->MAXHEALTH) {
+                    
+                    Hearth * tmp=dynamic_cast<Hearth*>(e);
+                    auto it = std::find_if( m_items.begin(), m_items.end(),
+                        [&]( Item *f ) { return ( f==tmp ); } );
+
+                    if (it!= m_items.end()) {
+                        m_items.erase(it);
+                    }
+                    if (!isHeartInvincible) {
+                        m_hero->setHealth(m_hero->getHealth()+1);    
+                        isHeartInvincible = true;
+                    }  
+                }
 
             }
             if(!isTouchEnnemy || nbEnnemy >=5)
                 isInvincible = false;
+            if(!isTouchHeart)
+                isHeartInvincible = false;
 
             std::vector<Entity*> allCollide2 = Collision::allCollide(m_mouse, m_mouse->getPosition());
             for (Entity* e : allCollide2) {
                 std::string typeName = typeid(*e).name();
                 typeName = typeName.substr(1, typeName.length() - 1);
+
                 if(typeName == "Ennemy") {
                     count_kill++;
                     Ennemy * tmp=dynamic_cast<Ennemy*>(e);
@@ -90,7 +110,7 @@ void Game::gameLoop() {
                         m_ennemies.erase(it);
                     }
 
-                    if (count_kill==75) {
+                    if (count_kill==120) {
                         (*m_map).cave=true;
                         m_map->loadMap("ressources/maps/map_lvl2.csv");
                     }
@@ -101,6 +121,11 @@ void Game::gameLoop() {
                         if (m_hero->getHealth()<m_hero->MAXHEALTH) {
                             m_hero->setHealth(m_hero->getHealth());
                         }
+                    }
+                    Vector2<int> pos = tmp->getPosition();
+
+                    if (rand()%100==0) {
+                        m_items.push_back(new Hearth(m_map, "ressources/tiles/rogue/tile_0102.png", pos, "Hearth"));
                     }
                 }
             }
@@ -185,6 +210,9 @@ void Game::update() {
     for (unsigned int i=0;i<m_ennemies.size();i++){
         m_ennemies[i]->update(Vector2<int>(m_hero->getPosition()));
     }
+    for (unsigned int i=0;i<m_items.size();i++){
+        m_items[i]->update();
+    }
 }
 
 void Game::render() {
@@ -195,6 +223,9 @@ void Game::render() {
 
         for(unsigned int i=0;i<m_ennemies.size();i++){
             m_ennemies[i]->render();
+        }
+        for(unsigned int i=0;i<m_items.size();i++){
+            m_items[i]->render();
         }
         m_mouse->render();
 
@@ -248,6 +279,7 @@ void Game::loadMap(std::string filename) {
 
     m_hero=new Hero(m_map, "ressources/player/fromage.png", Vector2<int>(10, 16), "Fromage");
     m_mouse=new Mouse(m_map, "ressources/player/fireball.png", Vector2<int>(10, 0), "SuperMouse");
+
 }
 
 /*
