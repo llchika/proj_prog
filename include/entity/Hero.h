@@ -32,20 +32,30 @@ public:
     /// </summary>
     virtual void update();
 
+    /// <summary>
+    /// Fonction permettant de deplacer le héros.
     void modif_dir(sens direction);
 
+    /// <summary>
+    /// Pour récupérer la position de la caméra.
     const Vector2<int> & getCamera() const {
         return m_pos_camera;
     }
 
+    /// <summary>
+    /// Pour récupérer la direction du héros.
     const Vector2<int> & getDirection() const {
         return m_direction;
     }
 
+    /// <summary>
+    /// Pour récupérer la santé du héros.
     int getHealth() const {
         return m_health;
     }
 
+    /// <summary>
+    /// Pour modifier la santé du héros.
     void setHealth(int health) {
         m_health = health;
     }
