@@ -56,9 +56,9 @@ void Game::gameLoop() {
                     //manque invulnerabilite tempo
                     //std::cout << "Ennemy" << std::endl;
                     isTouchEnnemy = true;
-                    if (!invincible) {
+                    if (!isInvincible) {
                         m_hero->setHealth(m_hero->getHealth()-1);
-                        invincible = true;
+                        isInvincible = true;
                     }
                     
                 }
@@ -72,7 +72,7 @@ void Game::gameLoop() {
 
             }
             if(!isTouchEnnemy)
-                invincible = false;
+                isInvincible = false;
 
             std::vector<Entity*> allCollide2 = Collision::allCollide(m_mouse, m_mouse->getPosition());
             for (Entity* e : allCollide2) {
