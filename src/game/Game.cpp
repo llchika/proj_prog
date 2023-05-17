@@ -82,11 +82,11 @@ void Game::gameLoop() {
                         m_ennemies.erase(it);
                     }
 
-                    if (count_kill==50) {
+                    if (count_kill==75) {
                         (*m_map).cave=true;
                         m_map->loadMap("ressources/maps/map_lvl2.csv");
                     }
-                    if (count_kill%50==0) {
+                    if (count_kill%75==0) {
                         m_hero->MAXHEALTH+=1;
                     }
                     if (count_kill%50==0) {
