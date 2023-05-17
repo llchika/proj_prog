@@ -13,11 +13,10 @@ private:
     Vector2<int> m_direction;
     int m_speed;
 	Vector2<int> m_pos_camera;
-
-    int const MAXHEALTH;
     int m_health;
 
 public:
+    int MAXHEALTH;
     /// <summary>
     /// Constructeur de Hero
     /// </summary>

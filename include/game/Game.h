@@ -35,10 +35,9 @@ private :
 	Mouse *m_mouse;
 
 	std::vector<Ennemy*> m_ennemies;
-
-	bool invincible;
-
+	bool isInvincible;
 public :
+	int count_kill;
 	/**
 	 * Constructeur de la fenêtre de jeu
 	 * @param width: Largeur de la fenêtre
