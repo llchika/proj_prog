@@ -28,6 +28,8 @@ private :
 	unsigned int m_sizeX;
 	unsigned int m_sizeY;
 
+	bool cave;
+
 	//Texture des cases
 	SDL_Rect m_srcRect, m_destRect;
 
