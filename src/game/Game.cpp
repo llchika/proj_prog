@@ -261,7 +261,9 @@ void Game::spawnEnnemy() {
 	int y = rand() % (JeuESIR::maxScreenCol-10) + 8;
     int x = rand() % (JeuESIR::maxScreenRow-10) + 8;
 
-    m_ennemies.push_back(new Ennemy(m_map, "ressources/player/p1_walk01.png", Vector2<int>(x, y), "SuperEnnemy"));
+    //random between true and false
+    bool target = rand() % 2;
+    m_ennemies.push_back(new Ennemy(m_map, "ressources/player/p1_walk01.png", Vector2<int>(x, y), "SuperEnnemy", target));
 }
 
 

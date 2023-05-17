@@ -12,10 +12,11 @@ private:
     int const MAXHEALTH;
     int m_health;
     float m_timer;
+    bool m_target;
 
 public:
 
-    Ennemy(Map* map, const char* textureSheet, const Vector2<int>& position, std::string name);
+    Ennemy(Map* map, const char* textureSheet, const Vector2<int>& position, std::string name, bool m_target=true);
     virtual ~Ennemy();
 
     void update(Vector2<int> const& target);
