@@ -20,10 +20,10 @@ public:
 		bool operator==(Id const& id) const;
 	};
 static std::set<Entity*> m_entity;
-
+enum class Status { RUNNING, DESTROY };
 private :
 	//Status 
-	enum class Status { RUNNING, DESTROY };	
+		
 	Status m_status;
 
 	//Liste de toutes les entit�s du jeu

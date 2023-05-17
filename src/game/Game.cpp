@@ -68,7 +68,7 @@ void Game::gameLoop() {
                 //game over
                 if(m_hero->getHealth()<=0)
                 {
-                    //load game over screen
+                    loadGameOver();
                     std::cout << "game over" << std::endl;
                 }
             }
@@ -192,6 +192,16 @@ void Game::loadMap(std::string filename) {
 
     m_hero=new Hero(m_map, "ressources/player/fromage.png", Vector2<int>(10, 16), "Fromage");
     m_mouse=new Mouse(m_map, "ressources/player/fireball.png", Vector2<int>(10, 0), "SuperMouse");
+}
+
+void Game::loadGameOver() {
+    delete m_map;
+    for (std::set<Entity*>::iterator it = Entity::m_entity.begin(); it != Entity::m_entity.end(); ++it)
+    {
+        (*it)->setStatus(Entity::Status::DESTROY);
+    }
+	m_map=new Map("ressources/maps/game_over.csv");
+	
 }
 
 //remove the ennemy from the vector

@@ -3,7 +3,6 @@
 
 #include <string>
 #include <Entity.h>
-#include <Timer.h>
 
 class Ennemy : public Entity {
 public:
