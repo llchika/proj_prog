@@ -18,9 +18,6 @@ Hero::~Hero() {}
 
 void Hero::update() {
 	m_pos_camera=m_pos_camera+m_direction;
-
-	
-
 	//move all entities not of hero type in the opposite direction
 
 	for (std::set<Entity*>::iterator it = Entity::m_entity.begin(); it != Entity::m_entity.end(); ++it)
@@ -32,7 +29,6 @@ void Hero::update() {
 			Ennemy* ennemy = dynamic_cast<Ennemy*>(*it);
 			ennemy->setPosition(ennemy->getPosition()-m_direction);
 		}
-		
 	}
 
 	//load hearts
