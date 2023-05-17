@@ -34,7 +34,7 @@ void Mouse::update(Vector2<int> mousePos){
         }
         if(typeName == "Mouse")
         {
-            std::cout << "mouse" << std::endl;                    
+            std::cout << "mouse" << std::endl;         
         }
 
 

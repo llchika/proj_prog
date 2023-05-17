@@ -138,12 +138,12 @@ void Game::update() {
 void Game::render() {
 	m_map->drawMap(m_hero->getCamera());
 	m_hero->render();
-    m_mouse->render();
+    
 
     for(unsigned int i=0;i<m_ennemies.size();i++){
         m_ennemies[i]->render();
     }
-
+    m_mouse->render();
 
 	Renderer::getInstance()->flush();
 }
