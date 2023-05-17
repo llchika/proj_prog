@@ -6,6 +6,8 @@ Map::Map(std::string filename) : cave(true) {
 	loadMap(filename);
 
 	m_sombre=TextureManager::loadTexture("ressources/sombre.png");
+	m_titre=TextureManager::loadTexture("ressources/titre.png");
+	m_end=TextureManager::loadTexture("ressources/adieu.png");
 
 	m_floor=TextureManager::loadTexture("ressources/tiles/donjon/tile_0048.png");
 	m_dirt=TextureManager::loadTexture("ressources/tiles/donjon/tile_0049.png");

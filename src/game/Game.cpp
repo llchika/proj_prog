@@ -12,7 +12,7 @@ Game::Game(unsigned int width, unsigned int height): count(0) {
 		exit(3);
 	}
 
-	m_gameState=GameState::PLAY;
+	m_gameState=GameState::INIT;
 
 	Renderer::initialize(width, height);
 
@@ -35,6 +35,13 @@ void Game::run() {
 void Game::gameLoop() {
 	// Boucle principale
 	while (m_gameState!=GameState::EXIT) {
+        while (m_gameState==GameState::INIT) {
+            m_frameStart=SDL_GetTicks();
+
+            handleEvent();
+			render();
+
+        }
 		while (m_gameState==GameState::PLAY) {
 			m_frameStart=SDL_GetTicks();
 
@@ -65,8 +72,6 @@ void Game::gameLoop() {
                 }
             }
 			
-            
-	        //std::cout << m_hero->getDirection()[0] << ", " << m_hero->getDirection()[1] << std::endl;
 			handleEvent();
 			update();
 			render();
@@ -135,25 +140,37 @@ void Game::update() {
 }
 
 void Game::render() {
-	m_map->drawMap(m_hero->getCamera());
-	m_hero->render();
+    if (m_gameState==GameState::PLAY) {
+        m_map->drawMap(m_hero->getCamera());
+        m_hero->render();
+        
+
+        for(unsigned int i=0;i<m_ennemies.size();i++){
+            m_ennemies[i]->render();
+        }
+        m_mouse->render();
+
+        if (m_map->isCave()) {
+            SDL_Rect Rect;
+
+            Rect.x=0;
+            Rect.y=0;
+            Rect.w=JeuESIR::screenWidth;
+            Rect.h=JeuESIR::screenHeight;
+
+            SDL_RenderCopy(static_cast<SDL_Renderer*>(Renderer::getInstance()->getSdlRenderer()), m_map->getSombre(), &Rect, &Rect);
+        }
+    } else if (m_gameState==GameState::INIT) {
+            SDL_Rect Rect;
+
+            Rect.x=0;
+            Rect.y=0;
+            Rect.w=JeuESIR::screenWidth;
+            Rect.h=JeuESIR::screenHeight;
+
+            SDL_RenderCopy(static_cast<SDL_Renderer*>(Renderer::getInstance()->getSdlRenderer()), m_map->getTitle(), &Rect, &Rect);
+    }
     
-
-    for(unsigned int i=0;i<m_ennemies.size();i++){
-        m_ennemies[i]->render();
-    }
-    m_mouse->render();
-
-    if (m_map->isCave()) {
-        SDL_Rect Rect;
-
-        Rect.x=0;
-        Rect.y=0;
-        Rect.w=JeuESIR::screenWidth;
-        Rect.h=JeuESIR::screenHeight;
-
-        SDL_RenderCopy(static_cast<SDL_Renderer*>(Renderer::getInstance()->getSdlRenderer()), m_map->getSombre(), &Rect, &Rect);
-    }
 
 	Renderer::getInstance()->flush();
 }

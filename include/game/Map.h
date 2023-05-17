@@ -34,6 +34,8 @@ private :
 	SDL_Rect m_srcRect, m_destRect;
 
 	SDL_Texture* m_sombre;
+	SDL_Texture* m_titre;
+	SDL_Texture* m_end;
 
 	SDL_Texture* m_black;
 	SDL_Texture* m_floor;
@@ -54,6 +56,14 @@ public :
 
 	SDL_Texture* getSombre() {
 		return m_sombre;
+	}
+
+	SDL_Texture* getTitle() {
+		return m_titre;
+	}
+
+	SDL_Texture* getEnd() {
+		return m_end;
 	}
 
 	/// <summary>
