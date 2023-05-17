@@ -64,6 +64,7 @@ void Game::gameLoop() {
                 if(m_hero->getHealth()<=0)
                 {
                     //load game over screen
+                    std::cout << "game over" << std::endl;
                 }
             }
 			
