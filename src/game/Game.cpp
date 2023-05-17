@@ -242,8 +242,8 @@ void Game::removeEnnemy(Ennemy* ennemy){
 
 void Game::spawnEnnemy() {
 	//get random position in the screen but at more than 5 tiles m_hero
-	int x = rand() % (JeuESIR::maxScreenCol-10) + 5;
-    int y = rand() % (JeuESIR::maxScreenRow-10) + 5;
+	int y = rand() % (JeuESIR::maxScreenCol-10) + 5;
+    int x = rand() % (JeuESIR::maxScreenRow-10) + 5;
 
     m_ennemies.push_back(new Ennemy(m_map, "ressources/player/p1_walk01.png", Vector2<int>(x, y), "SuperEnnemy"));
 
