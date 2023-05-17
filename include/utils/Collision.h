@@ -48,7 +48,7 @@ class Collision {
         /// </summary>
         /// <param name="e1">Entity 1</param>
         /// <param name="e2">Entity 2</param>
-        /// <param name="position">Position de l'Entity à tester</param>
+        /// <param name="position">Position de l'Entity 1 à tester</param>
         /// <returns> retourne vrai si au moins 1 point d'Entity 2 est en collision avec Entity 1 </returns>
         static bool testIfCollide(Entity *e1, Entity *e2, Vector2<int>& position)
         {
@@ -67,6 +67,13 @@ class Collision {
             return false;
         }
 
+        /// <summary>
+        /// Test si un point est en collision avec l'Entity 1
+        /// </summary>
+        /// <param name="e1">Entity 1</param>
+        /// <param name="point">Point à tester</param>
+        /// <param name="position">Position de l'Entity 1 à tester</param>
+        /// <returns> retourne vrai si le point est en collision avec l'Entity 1 </returns>
         static bool testIfPointCollide(Entity *e1, Vector2<int> &point, Vector2<int>& position) {
             if (point[0] >= position[0]
                 && point[0] <= position[0]+e1->getSize()[0]
