@@ -52,24 +52,19 @@ void Game::gameLoop() {
                 //type id name without the fist char
                 std::string typeName = typeid(*e).name();
                 typeName = typeName.substr(1, typeName.length() - 1);
-                if(typeName == "Ennemy")
-                {
+                if(typeName == "Ennemy") {
                     //manque invulnerabilite tempo
                     std::cout << "Ennemy" << std::endl;
                     m_hero->setHealth(m_hero->getHealth()-1);
                     
                 }
-                if(typeName == "Mouse")
-                {
+                if(typeName == "Mouse") {
                     std::cout << "mouse" << std::endl;
                     //m_hero->setHealth(m_hero->getHealth()-1);                    
                 }
-
                 //game over
-                if(m_hero->getHealth()<=0)
-                {
+                if(m_hero->getHealth()<=0) {
                     m_gameState=GameState::DEAD;
-                    std::cout << "game over" << std::endl;
                 }
             }
 			
