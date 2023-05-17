@@ -54,12 +54,12 @@ void Game::gameLoop() {
                 typeName = typeName.substr(1, typeName.length() - 1);
                 if(typeName == "Ennemy") {
                     //manque invulnerabilite tempo
-                    std::cout << "Ennemy" << std::endl;
+                    //std::cout << "Ennemy" << std::endl;
                     m_hero->setHealth(m_hero->getHealth()-1);
                     
                 }
                 if(typeName == "Mouse") {
-                    std::cout << "mouse" << std::endl;
+                    //std::cout << "mouse" << std::endl;
                     //m_hero->setHealth(m_hero->getHealth()-1);                    
                 }
                 //game over
@@ -108,7 +108,7 @@ void Game::handleEvent() {
                 m_gameState = GameState::EXIT;
                 break;
             case 'e':
-                if (m_gameState!=GameState::PLAY) {
+                if (m_gameState==GameState::INIT) {
                     std::cout << "Lancement du jeu" << ::std::endl;
                     m_gameState = GameState::PLAY;
                 }

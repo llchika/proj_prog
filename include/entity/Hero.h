@@ -43,7 +43,7 @@ public:
         return m_direction;
     }
 
-    const int getHealth() const {
+    int getHealth() const {
         return m_health;
     }
 
