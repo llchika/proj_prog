@@ -223,7 +223,7 @@ void Game::loadMap(std::string filename) {
 	m_map=new Map(filename);
     //load ennemies
     for(int i=0;i<10;i+=2){
-        m_ennemies.push_back(new Ennemy(m_map, "ressources/player/p1_walk01.png", Vector2<int>(i, 0), "SuperEnnemy"));
+        m_ennemies.push_back(new Ennemy(m_map, "ressources/player/ennemy.png", Vector2<int>(i, 0), "SuperEnnemy"));
     }
 
     m_hero=new Hero(m_map, "ressources/player/fromage.png", Vector2<int>(10, 16), "Fromage");
@@ -263,7 +263,12 @@ void Game::spawnEnnemy() {
 
     //random between true and false
     bool target = rand() % 2;
-    m_ennemies.push_back(new Ennemy(m_map, "ressources/player/p1_walk01.png", Vector2<int>(x, y), "SuperEnnemy", target));
+    if(target){
+        m_ennemies.push_back(new Ennemy(m_map, "ressources/player/ennemy.png", Vector2<int>(x, y), "SuperEnnemy", target));
+    }
+    else {
+        m_ennemies.push_back(new Ennemy(m_map, "ressources/player/dumb.png", Vector2<int>(x, y), "DumbEnnemy",target));
+    }
 }
 
 
