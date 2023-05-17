@@ -36,6 +36,8 @@ private :
 
 	std::vector<Ennemy*> m_ennemies;
 
+	bool invincible;
+
 public :
 	/**
 	 * Constructeur de la fenêtre de jeu

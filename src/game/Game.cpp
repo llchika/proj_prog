@@ -45,7 +45,7 @@ void Game::gameLoop() {
 		while (m_gameState==GameState::PLAY) {
 			m_frameStart=SDL_GetTicks();
 
-
+            bool isTouchEnnemy = false;
             //surement gourmand, si c'est trop lent changer de place
             std::vector<Entity*> allCollide = Collision::allCollide(m_hero, m_hero->getPosition());
             for (Entity* e : allCollide) {
@@ -55,7 +55,11 @@ void Game::gameLoop() {
                 if(typeName == "Ennemy") {
                     //manque invulnerabilite tempo
                     //std::cout << "Ennemy" << std::endl;
-                    m_hero->setHealth(m_hero->getHealth()-1);
+                    isTouchEnnemy = true;
+                    if (!invincible) {
+                        m_hero->setHealth(m_hero->getHealth()-1);
+                        invincible = true;
+                    }
                     
                 }
                 if(typeName == "Mouse") {
@@ -67,6 +71,8 @@ void Game::gameLoop() {
                 }
 
             }
+            if(!isTouchEnnemy)
+                invincible = false;
 
             std::vector<Entity*> allCollide2 = Collision::allCollide(m_mouse, m_mouse->getPosition());
             for (Entity* e : allCollide2) {
